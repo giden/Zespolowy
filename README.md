@@ -1,3 +1,3 @@
 Projekt zespolowy
 =========
-Albecki, Dyrda, Jaworski,Warzocha
+Albecki, Dyrda, Jaworski, Warzocha
