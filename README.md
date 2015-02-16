@@ -8,6 +8,8 @@ System rezerwacji biletów
 
 **Plan na I semestr:**
 - dokumentacja - use case'y DONE
-- szkielet (widok) IN PROGRESS
-- panel logowania/rejestracji
+- szkielet (widok) DONE
+- panel logowania/rejestracji DONE
+
+**Plan na II semestr:**
 
