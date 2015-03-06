@@ -1,5 +1,7 @@
 package com.ateam.web.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -9,11 +11,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+
+import com.ateam.users.model.User;
 
 @Controller
 public class MainController {
@@ -128,5 +133,29 @@ public class MainController {
 		return model;
 
 	}
+	
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView viewRegistration(Model model) {
+        User userForm = new User();    
+        model.addAttribute("userForm", userForm);
+
+         
+        return new ModelAndView("register");
+    }
+     
+    @RequestMapping(value = "/post_register", method = RequestMethod.POST)
+    public ModelAndView processRegistration(@ModelAttribute("userForm") User user,
+            Map<String, Object> model) {
+         
+        // implement your own registration logic here...
+         
+        // for testing purpose:
+        System.out.println("username: " + user.getUsername());
+        System.out.println("password: " + user.getPassword());
+         
+        return new ModelAndView("filmy");
+    }
+	
 
 }

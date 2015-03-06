@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+
 <%@page session="true"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -29,29 +31,28 @@
 
 			
 				<div id="center2">
-					<h2 class="login_h2">Panel logowania</h2>
+					<h2 class="login_h2">Panel rejestracji</h2>
 					<div id="login">
 						
+					   <div class="login_box">
+					   
 				   	   <c:if test="${not empty error}">
 							<div class="error">${error}</div>
 						</c:if>
 						<c:if test="${not empty msg}">
 							<div class="msg">${msg}</div>
 						</c:if>
-					   <div class="login_box">
-					   
 											
 											
-						<form name='loginForm'	action="<c:url value='/login' />" method='post'>
-									<div>
-												<input name="username" class="field" id="user_login" type="text" value="Login..." onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
-												<input name="password" class="field" id="user_pass" type="password" value="Hasło..." onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
-												<input type="submit" name="submit" class="login" value="submit" />
-												<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /></div>
-						</form>
+					 <form:form action="post_register" method="POST" modelAttribute="userForm">
+              
+               				<form:input path="username" />
+               				<form:password path="password" />	
+               				<input type="submit" value="Register" />
+      				  </form:form>
 						</div>
 						<ul class="list">
-							<li><a href="">Zarejestruj się</a></li>
+							<li><a href="<c:url value='/login' />">Zaloguj się</a></li>
 						</ul>
 					</div>
 				</div>
