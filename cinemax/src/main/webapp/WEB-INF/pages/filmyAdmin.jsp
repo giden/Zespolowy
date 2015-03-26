@@ -90,9 +90,8 @@
 			
 				<div id="center2">
 				
- 
 
-				
+					<a href="${pageContext.request.contextPath}/film/add"> Dodaj </a>
 					<h2>Wybór filmu</h2>
 					
 						<ul class="tabs">
@@ -113,8 +112,13 @@
 								<li>
 								<p class="movie_title">${film.name} </p>
 								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
+								
+								 <a href="${pageContext.request.contextPath}/film/edit/${film.filmId}.html">Edit</a><br>  
+   									 <a href="${pageContext.request.contextPath}/film/delete/${film.filmId}.html">Delete</a>
+								
 								<hr />
-								</li>
+								
+								  								</li>
 								
 							
 						</c:forEach>

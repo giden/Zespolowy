@@ -23,16 +23,7 @@ import com.ateam.users.model.User;
 @Controller
 public class MainController {
 
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView defaultPage() {
-
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
-		model.addObject("message", "This is default page!");
-		model.setViewName("filmy");
-		return model;
-
-	}
+	
 
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
@@ -134,7 +125,9 @@ public class MainController {
 
 	}
 	
-
+	
+	
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView viewRegistration(Model model) {
         User userForm = new User();    
