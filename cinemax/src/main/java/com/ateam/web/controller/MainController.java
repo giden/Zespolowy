@@ -4,12 +4,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ateam.users.model.User;
+import com.ateam.users.service.UserService;
 
 @Controller
 public class MainController {
 
-	
+	@Autowired
+	UserService us;
 
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
@@ -137,12 +141,12 @@ public class MainController {
         return new ModelAndView("register");
     }
      
-    @RequestMapping(value = "/post_register", method = RequestMethod.POST)
+    @RequestMapping(value = "/post_register", method = RequestMethod.GET)
     public ModelAndView processRegistration(@ModelAttribute("userForm") User user,
             Map<String, Object> model) {
          
-        // implement your own registration logic here...
-         
+    	us.createUser(user);
+    	
         // for testing purpose:
         System.out.println("username: " + user.getUsername());
         System.out.println("password: " + user.getPassword());

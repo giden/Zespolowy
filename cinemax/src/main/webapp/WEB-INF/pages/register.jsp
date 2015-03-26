@@ -44,7 +44,7 @@
 						</c:if>
 											
 											
-					 <form:form action="post_register" method="POST" modelAttribute="userForm">
+					 <form:form action="post_register" method="GET" modelAttribute="userForm">
               
                				<form:input path="username" />
                				<form:password path="password" />	

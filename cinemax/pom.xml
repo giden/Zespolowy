@@ -21,7 +21,7 @@
 		<developer>
 			<id>a-team</id>
 			<name>Albecki Warzocha Jaworski Dyrda</name>
-			<email>mkyong2002@gmail.com</email>
+			<email>pawel.albecki@gmail.com</email>
 		</developer>
 	</developers>
 
@@ -73,6 +73,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+	
 
 		<!-- Spring + aspects -->
 		<dependency>
@@ -100,6 +101,7 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		
 
 		<!-- Spring Security JSP Taglib -->
 		<dependency>

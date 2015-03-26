@@ -31,4 +31,10 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
+	@Override
+	public String createUser(User user) {
+		return (String) sessionFactory.getCurrentSession().save(user);
+
+	}
+
 }
