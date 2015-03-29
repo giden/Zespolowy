@@ -11,7 +11,6 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -67,6 +66,19 @@ public class MainController {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("dane");
+
+		return model;
+
+	}
+	
+	@RequestMapping(value = "/redirect**", method = RequestMethod.GET)
+	public ModelAndView redirectPage() {
+
+		ModelAndView model = new ModelAndView();
+		model.setViewName("redirect");
+		
+		String message = "Film was successfully added.";
+	    model.addObject("message", message);
 
 		return model;
 
@@ -141,7 +153,7 @@ public class MainController {
         return new ModelAndView("register");
     }
      
-    @RequestMapping(value = "/post_register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register/process", method = RequestMethod.GET)
     public ModelAndView processRegistration(@ModelAttribute("userForm") User user,
             Map<String, Object> model) {
          

@@ -812,6 +812,66 @@ font-weight:bold;
 	background-color: #ffb200;
 }
 
+.tabs2
+{
+margin-bottom: 50px;
+margin-top: 40px;
+padding: 0;
+list-style-type: none;
+display:block;
+}
+
+.tabs2 li { display: inline; margin-left:6px;}
+
+.tabs2 li a
+{
+text-decoration: none;
+padding: 11px;
+color: #b3b0e1;
+background-color: #333269;
+border-radius: 5px;
+font-family:tahoma, verdana, arial;
+font-size: 12px;
+font-weight:bold;
+}
+
+.tabs2 li a:hover
+{
+	color:black;
+	background-color: #ffb200;
+}
+
+.tabs2 li.active a {
+    color:black;
+	background-color: #ffb200;
+}
+
+
+.tabs3 a
+{
+text-decoration: none;
+padding: 11px;
+color:black;
+background-color: #ffb200;
+border-radius: 5px;
+font-family:tahoma, verdana, arial;
+font-size: 12px;
+font-weight:bold;
+}
+
+.tabs3 a:hover
+{
+	
+color: #b3b0e1;
+background-color: #333269;
+}
+
+.tabs3 .active a {
+    color:black;
+	background-color: #ffb200;
+}
+
+
 .movie_title {
 	color:white;
 	font-weight:bold;
@@ -1020,6 +1080,17 @@ color:white;
 }
 
 .dane input {
+display: inline-block;
+border: 1px solid #535282;
+background:#1c1b3e;
+width:243px;
+height:36px;
+color:#ffcc1c;
+padding-left:10px;
+padding-right:10px;
+}
+
+.dane #passwords {
 display: inline-block;
 border: 1px solid #535282;
 background:#1c1b3e;

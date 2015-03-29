@@ -1,4 +1,4 @@
-<%@taglib prefix="sec"
+﻿<%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -72,26 +72,30 @@
 
 	</sec:authorize>
 	<sec:authorize ifNotGranted="ROLE_USER">
-		<a href="login.xhtml"><img alt="" src="resources/images/zaloguj.png" /></a>
+		<a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a>
 	</sec:authorize></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<!--<ul>
-						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
-											<li><img alt="" src="images/menu/l.png" /></li>
-					</ul>-->
+					<sec:authorize access="hasRole('ROLE_USER')">
+					<ul>
+						<li><a href="<c:url value='/' />"><img alt="Strona G____wna" src="<c:url value='/resources/images/menu/1.png' />" /></a></li>
+											
+					</ul>
+					</sec:authorize>
 					<sec:authorize ifNotGranted="ROLE_USER">
-					Niezalogowany, <a href="login.xhtml">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
+					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
 					</sec:authorize>
 				</div>
 
 			
 				<div id="center2">
 				
-
-					<a href="${pageContext.request.contextPath}/film/add"> Dodaj </a>
+					<br><br>
+					<div class="tabs3">
+					<a class="active" href="${pageContext.request.contextPath}/film/add"> DODAJ FILM </a>
+					</div>
 					<h2>Wybór filmu</h2>
 					
 						<ul class="tabs">
@@ -113,9 +117,8 @@
 								<p class="movie_title">${film.name} </p>
 								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
 								
-								 <a href="${pageContext.request.contextPath}/film/edit/${film.filmId}.html">Edit</a><br>  
-   									 <a href="${pageContext.request.contextPath}/film/delete/${film.filmId}.html">Delete</a>
-								
+								 <br><br><ul class="tabs2"><li><a href="${pageContext.request.contextPath}/film/edit/${film.filmId}.html">Edit</a></li>   |   <li><a href="${pageContext.request.contextPath}/film/delete/${film.filmId}.html">Delete</a>
+								</li></ul><br><br>
 								<hr />
 								
 								  								</li>

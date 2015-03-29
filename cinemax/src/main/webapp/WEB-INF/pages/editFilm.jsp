@@ -1,5 +1,7 @@
+﻿<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <%@page session="true"%>
 
@@ -18,42 +20,56 @@
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
-			<div id="like_it"><a href="login.xhtml"><img alt="" src="resources/images/zaloguj.png" /></a></div>
+			<div id="like_it"><sec:authorize access="hasRole('ROLE_USER')">
+		<!-- For login user -->
+		<c:url value="/logout" var="logoutUrl" />
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+		<div>
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+				</div>
+		</form>
+		<script>
+			function formSubmit() {
+				document.getElementById("logoutForm").submit();
+			}
+		</script>
+		<c:if test="${pageContext.request.userPrincipal.name != null}">
+			
+				User : ${pageContext.request.userPrincipal.name} | <a
+					href="javascript:formSubmit()"> Wyloguj</a>
+			
+		</c:if>
+
+	</sec:authorize>
+	<sec:authorize ifNotGranted="ROLE_USER">
+		<a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a>
+	</sec:authorize></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
-				<!--<div id="menu">
+				<div id="menu">
+					<sec:authorize access="hasRole('ROLE_USER')">
 					<ul>
-						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
-											<li><img alt="" src="images/menu/l.png" /></li>
+						<li><a href="<c:url value='/' />"><img alt="Strona G____wna" src="<c:url value='/resources/images/menu/1.png' />" /></a></li>
+											
 					</ul>
-				</div>-->
-
+					</sec:authorize>
+					<sec:authorize ifNotGranted="ROLE_USER">
+					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
+					</sec:authorize>
+				</div>
 			
 				<div id="center2">
-					<h2 class="login_h2">Panel rejestracji</h2>
-					<div id="login">
-						
-					   <div class="login_box">
-					   
-				   	   <c:if test="${not empty error}">
-							<div class="error">${error}</div>
-						</c:if>
-						<c:if test="${not empty msg}">
-							<div class="msg">${msg}</div>
-						</c:if>
-											
-											
-					 <form:form action="process/${film.filmId}.html" method="GET"  commandName="film">
+					<h2>Edytuj film</h2>
+					
+					<form:form action="process/${film.filmId}.html" method="GET"  commandName="film" class="dane">
               
                				<form:input path="name" />
                				<input type="submit" value="Update" />
       				  </form:form>
-						</div>
-						<ul class="list">
-							<li><a href="<c:url value='/login' />">Zaloguj się</a></li>
-						</ul>
-					</div>
+					
+					
 				</div>
 
 			<div style="clear:both;"></div>

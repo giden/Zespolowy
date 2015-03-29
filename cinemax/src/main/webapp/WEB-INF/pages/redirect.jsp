@@ -1,4 +1,4 @@
-<%@taglib prefix="sec"
+﻿<%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -49,7 +49,8 @@
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
-			<div id="like_it"><sec:authorize access="hasRole('ROLE_USER')">
+			<div id="like_it">
+			<sec:authorize access="hasRole('ROLE_USER')">
 		<!-- For login user -->
 		<c:url value="/logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
@@ -72,7 +73,7 @@
 
 	</sec:authorize>
 	<sec:authorize ifNotGranted="ROLE_USER">
-		<a href="login.xhtml"><img alt="" src="resources/images/zaloguj.png" /></a>
+		<a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a>
 	</sec:authorize></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
@@ -83,7 +84,7 @@
 											<li><img alt="" src="images/menu/l.png" /></li>
 					</ul>-->
 					<sec:authorize ifNotGranted="ROLE_USER">
-					Niezalogowany, <a href="login.xhtml">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
+					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
 					</sec:authorize>
 				</div>
 
@@ -92,7 +93,7 @@
 							<div class="msg">${message}</div>
 						</c:if>
 						
-				<a href="${pageContext.request.contextPath}/film/list"> kontynuuj </a>
+				<a href="<c:url value='/film/list' />"> kontynuuj </a>
 
 			<div style="clear:both;"></div>
 			</div>

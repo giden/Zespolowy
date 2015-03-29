@@ -1,4 +1,4 @@
-<%@taglib prefix="sec"
+﻿<%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -72,18 +72,21 @@
 
 	</sec:authorize>
 	<sec:authorize ifNotGranted="ROLE_USER">
-		<a href="login.xhtml"><img alt="" src="resources/images/zaloguj.png" /></a>
+		<a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a>
 	</sec:authorize></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<!--<ul>
-						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
-											<li><img alt="" src="images/menu/l.png" /></li>
-					</ul>-->
+					<sec:authorize access="hasRole('ROLE_USER')">
+					<ul>
+						<li><a href="<c:url value='/' />"><img alt="Strona G____wna" src="<c:url value='/resources/images/menu/1.png' />" /></a></li>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li><a href="<c:url value='/film' />">Zarządzanie filmami</a></li>	</sec:authorize>			
+					</ul>
+					</sec:authorize>
 					<sec:authorize ifNotGranted="ROLE_USER">
-					Niezalogowany, <a href="login.xhtml">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
+					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
 					</sec:authorize>
 				</div>
 

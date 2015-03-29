@@ -1,7 +1,6 @@
 package com.ateam.web.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,9 +33,8 @@ public class FilmController {
 	public ModelAndView processAdding(@ModelAttribute("filmForm") Film film) {
 		fs.addFilm(film);
 		
-		ModelAndView modelAndView = new ModelAndView("redirect");
-		String message = "Film was successfully added.";
-	    modelAndView.addObject("message", message);
+		ModelAndView modelAndView = new ModelAndView("redirect:/redirect");
+		
 	    
 	    return modelAndView;	
 	}
@@ -74,9 +72,9 @@ public class FilmController {
     }
     
     @RequestMapping(value="/film/edit/process/{id}", method=RequestMethod.GET)
-    public ModelAndView edditingFilm(@ModelAttribute Film film, @PathVariable Integer id) {
+    public ModelAndView editingFilm(@ModelAttribute Film film, @PathVariable Integer id) {
          
-        ModelAndView modelAndView = new ModelAndView("redirect");
+        ModelAndView modelAndView = new ModelAndView("redirect:/redirect");
          
         fs.updateFilm(film, id);
          
@@ -88,7 +86,7 @@ public class FilmController {
     
     @RequestMapping(value="/film/delete/{id}", method=RequestMethod.GET)
     public ModelAndView deletefilm(@PathVariable Integer id) {
-        ModelAndView modelAndView = new ModelAndView("redirect");
+        ModelAndView modelAndView = new ModelAndView("redirect:/redirect");
         fs.deleteFilm(id);
         String message = "Film was successfully deleted.";
         modelAndView.addObject("message", message);

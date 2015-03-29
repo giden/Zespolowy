@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -16,7 +16,7 @@
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
-			<div id="like_it"><a href="login.xhtml"><img alt="" src="resources/images/zaloguj.png" /></a></div>
+			<div id="like_it"><a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
@@ -46,7 +46,7 @@
 									<div>
 												<input name="username" class="field" id="user_login" type="text" value="Login..." onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
 												<input name="password" class="field" id="user_pass" type="password" value="Hasło..." onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
-												<input type="submit" name="submit" class="login" value="submit" />
+												<input type="submit" name="submit" class="login"  />
 												<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /></div>
 						</form>
 						</div>

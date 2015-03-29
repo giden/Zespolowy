@@ -1,5 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <%@page session="true"%>
 
@@ -18,43 +20,32 @@
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
-			<div id="like_it"><a href="login.xhtml"><img alt="" src="resources/images/zaloguj.png" /></a></div>
+			<div id="like_it"><a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
-				<!--<div id="menu">
-					<ul>
+				<div id="menu">
+					<!--<ul>
 						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
 											<li><img alt="" src="images/menu/l.png" /></li>
-					</ul>
-				</div>-->
+					</ul>-->
+					<sec:authorize ifNotGranted="ROLE_USER">
+					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
+					</sec:authorize>
+				</div>
 
 			
 				<div id="center2">
-					<h2 class="login_h2">Panel rejestracji</h2>
-					<div id="login">
-						
-					   <div class="login_box">
-					   
-				   	   <c:if test="${not empty error}">
-							<div class="error">${error}</div>
-						</c:if>
-						<c:if test="${not empty msg}">
-							<div class="msg">${msg}</div>
-						</c:if>
-											
-											
-					 <form:form action="post_register" method="GET" modelAttribute="userForm">
+					<h2>Panel rejestracji</h2>
+				
+					
+					<form:form action="register/process" method="GET" modelAttribute="userForm" class="dane">
               
                				<form:input path="username" />
-               				<form:password path="password" />	
+               				<form:password path="password" />
                				<input type="submit" value="Register" />
       				  </form:form>
-						</div>
-						<ul class="list">
-							<li><a href="<c:url value='/login' />">Zaloguj się</a></li>
-						</ul>
-					</div>
+					
 				</div>
 
 			<div style="clear:both;"></div>

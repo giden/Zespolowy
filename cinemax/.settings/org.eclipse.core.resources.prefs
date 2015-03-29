@@ -1,2 +1,11 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/pages/addFilm.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/dane.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/editFilm.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/filmy.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/filmyAdmin.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/login.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/redirect.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/register.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/rezerwacje.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/sala.jsp=UTF-8
