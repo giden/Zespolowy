@@ -25,6 +25,25 @@ CREATE TABLE films (
 	PRIMARY KEY (film_id)
 
 );
+
+CREATE TABLE `reservations` (
+  `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
+  `reservationname` varchar(45) NOT NULL,
+  `reservationseat` int(11) NOT NULL,
+  `reservationsurname` varchar(45) DEFAULT NULL,
+  `reservationemail` varchar(45) NOT NULL,
+  `reservationphone` varchar(45) DEFAULT NULL,
+  `reservationdate` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`reservation_id`)
+);
+
+CREATE TABLE `seats` (
+  `seat_id` int(11) NOT NULL AUTO_INCREMENT,
+  `seatnumber` int(11) NOT NULL,
+  PRIMARY KEY (`seat_id`)
+);
+
+
   
 INSERT INTO users(username,password,enabled)
 VALUES ('pawel','$2a$10$sTb.BBlBTlAwlV66fa0zyuLmNN1iOmbAbLFsjAVvAQwUVhqGmn5Ki', true);
