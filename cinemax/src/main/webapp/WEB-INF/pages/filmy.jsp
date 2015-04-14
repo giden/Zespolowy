@@ -80,8 +80,8 @@
 				<div id="menu">
 					<sec:authorize access="hasRole('ROLE_USER')">
 					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
-					|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
-
+					<sec:authorize access="hasRole('ROLE_ADMIN')">|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
+					</sec:authorize>
 					</sec:authorize>
 					<sec:authorize ifNotGranted="ROLE_USER">
 					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!

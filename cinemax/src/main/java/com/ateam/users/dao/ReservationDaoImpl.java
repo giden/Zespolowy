@@ -27,6 +27,8 @@ public class ReservationDaoImpl implements ReservationDao {
 	public void updateReservation(Reservation reservation, Integer id) {
 		Reservation reservationToUpdate = getReservation(id);
         reservationToUpdate.setName(reservation.getName());
+        reservationToUpdate.setSurname(reservation.getSurname());
+
         sessionFactory.getCurrentSession().update(reservationToUpdate);
 		
 	}

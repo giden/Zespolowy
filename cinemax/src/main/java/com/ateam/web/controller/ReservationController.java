@@ -46,7 +46,6 @@ public class ReservationController {
 
 		ModelAndView modelAndView = new ModelAndView("dane");
 		
-		modelAndView.addObject(reservation);
 		modelAndView.addObject("reservationFormNext", reservation);
 		
 	    

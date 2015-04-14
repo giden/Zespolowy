@@ -46,12 +46,12 @@
 									<div>
 												<input name="username" class="field" id="user_login" type="text" value="Login..." onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
 												<input name="password" class="field" id="user_pass" type="password" value="Hasło..." onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
-												<input type="submit" name="submit" class="login"  />
+												<input type="submit" value="" name="submit" class="login"  />
 												<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /></div>
 						</form>
 						</div>
 						<ul class="list">
-							<li><a href="">Zarejestruj się</a></li>
+							<li><a href="<c:url value='/register' />">Zarejestruj się</a></li>
 						</ul>
 					</div>
 				</div>
