@@ -1,9 +1,13 @@
 USE test;
-
 drop table user_roles;
-drop table users;
+drop table users;/*
+drop table shows;*/
 drop table films;
+/*
 
+drop table seats;
+drop table reservations;
+*/
 CREATE  TABLE users (
   username VARCHAR(45) NOT NULL,
   password VARCHAR(60) NOT NULL,
@@ -25,6 +29,15 @@ CREATE TABLE films (
 	PRIMARY KEY (film_id)
 
 );
+
+CREATE TABLE shows (
+	show_id int(11) NOT NULL AUTO_INCREMENT,
+	show_date datetime NOT NULL,
+	film_id int(11) NOT NULL,
+	PRIMARY KEY (show_id),
+ 	UNIQUE KEY uni_id_date(show_date, film_id),
+ 	KEY fk_film_idx (film_id),
+	CONSTRAINT fk_film FOREIGN KEY (film_id) REFERENCES films (film_id));
 
 CREATE TABLE `reservations` (
   `reservation_id` int(11) NOT NULL AUTO_INCREMENT,

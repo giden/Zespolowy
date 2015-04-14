@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ateam.users.model.User;
 import com.ateam.users.model.UserRole;
 
 @Repository
@@ -27,6 +28,12 @@ public class RoleDaoImpl implements RoleDao {
 		} else {
 			return null;
 		}
+
+	}
+	
+	@Override
+	public Integer createRole(UserRole role) {
+		return (Integer) sessionFactory.getCurrentSession().save(role);
 
 	}
 

@@ -31,11 +31,15 @@ public class UserServiceImpl implements UserService {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
 
-		Set<UserRole> roles = new HashSet<UserRole>();
-		roles.add(rd.findByName("ROLE_USER"));
-		user.setUserRole(roles);
+		String id = ud.createUser(user);
+	
+		UserRole role = new UserRole();
+		role.setRole("ROLE_USER");
+		role.setUser(user);
+		
+		rd.createRole(role);
 
-		return ud.createUser(user);
+		return id;
 		
 	}
 

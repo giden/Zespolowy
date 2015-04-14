@@ -6,5 +6,7 @@ public interface RoleDao {
 
 	UserRole findByName(String username);
 
+	Integer createRole(UserRole role);
+
 	
 }

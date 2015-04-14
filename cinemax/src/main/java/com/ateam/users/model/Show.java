@@ -16,7 +16,7 @@ import javax.persistence.UniqueConstraint;
 
 
 @Entity
-@Table(name = "shows", catalog = "test", uniqueConstraints = @UniqueConstraint(columnNames = { "date", "filmname" }))
+@Table(name = "shows", catalog = "test", uniqueConstraints = @UniqueConstraint(columnNames = { "show_date", "filmname" }))
 public class Show {
 
 	private Integer showId;
@@ -33,7 +33,7 @@ public class Show {
 		this.showId = showId;
 	}	
 	
-	@Column(name = "date", nullable = false)
+	@Column(name = "show_date", nullable = false)
 	public Date getDate() {
 		return date;
 	}
