@@ -1,8 +1,8 @@
 USE test;
-/*
+
 drop table user_roles;
 drop table users;
-drop table films;*/
+drop table films;
 
 CREATE  TABLE users (
   username VARCHAR(45) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `reservations` (
   `reservationsurname` varchar(45) DEFAULT NULL,
   `reservationemail` varchar(45) NOT NULL,
   `reservationphone` varchar(45) DEFAULT NULL,
-  `reservationdate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `reservationdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`reservation_id`)
 );
 

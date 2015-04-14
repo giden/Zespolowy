@@ -20,18 +20,45 @@
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
-			<div id="like_it"><a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a></div>
+			<div id="like_it"><sec:authorize access="hasRole('ROLE_USER')">
+		<!-- For login user -->
+		<c:url value="/logout" var="logoutUrl" />
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+		<div>
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+				</div>
+		</form>
+		<script>
+			function formSubmit() {
+				document.getElementById("logoutForm").submit();
+			}
+		</script>
+		<c:if test="${pageContext.request.userPrincipal.name != null}">
+			
+				User : ${pageContext.request.userPrincipal.name} | <a
+					href="javascript:formSubmit()"> Wyloguj</a>
+			
+		</c:if>
+
+	</sec:authorize>
+	<sec:authorize ifNotGranted="ROLE_USER">
+		<a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a>
+	</sec:authorize></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<!--<ul>
-						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
-											<li><img alt="" src="images/menu/l.png" /></li>
-					</ul>-->
-					Niezalogowany, <a href="login.xhtml">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
-				</div>
+					<sec:authorize access="hasRole('ROLE_USER')">
+					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
+					|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
 
+					</sec:authorize>
+					<sec:authorize ifNotGranted="ROLE_USER">
+					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
+					</sec:authorize>
+				</div>
+	
 			
 				<div id="center2">
 				

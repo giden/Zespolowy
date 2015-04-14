@@ -53,7 +53,28 @@
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
-			<div id="like_it"><a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a></div>
+			<div id="like_it">
+			<!-- For login user -->
+		<c:url value="/logout" var="logoutUrl" />
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+		<div>
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+				</div>
+		</form>
+		<script>
+			function formSubmit() {
+				document.getElementById("logoutForm").submit();
+			}
+		</script>
+		<c:if test="${pageContext.request.userPrincipal.name != null}">
+			
+				User : ${pageContext.request.userPrincipal.name} | <a
+					href="javascript:formSubmit()"> Wyloguj</a>
+			
+		</c:if>
+					
+			</div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
@@ -62,7 +83,11 @@
 						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
 											<li><img alt="" src="images/menu/l.png" /></li>
 					</ul>-->
-					<a href="login.xhtml" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>   |   <a href="login.xhtml" style="color:white; padding-right:10px; padding-left:10px">Dodaj rezerwację</a>   |   <a href="login.xhtml" style="color:white; padding-right:10px; padding-left:10px">Klienci</a>   |   <a href="login.xhtml" style="color:white; padding-right:10px; padding-left:10px">Dodaj klienta</a></div>
+					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
+					|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
+					   |   <a href="<c:url value='/sala' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj rezerwację</a>
+					      |   <a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Klienci</a>
+					         |   <a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj klienta</a></div>
 
 			
 				<div id="center2">
