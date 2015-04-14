@@ -11,7 +11,7 @@
     <head>
         <title>Cinemax</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="resources/style.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/cinemax/resources/style.css" media="screen" />
         <link rel="shortcut icon" href="" type="image/x-icon" />
 		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400italic' rel='stylesheet' type='text/css' />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
@@ -45,23 +45,25 @@
 					
 					<hr />
 					
-					<form action="#" class="dane">
-						<ul>
-							  <li><label>Imię</label> <input type="text" name="fname" /></li>
-							  <li><label>Nazwisko</label> <input type="text" name="fname" /></li>
-							  <li><label>E-mail</label> <input type="text" name="fname" /></li>
-							  <li><label>Powtórz e-mail</label> <input type="text" name="fname" /></li>
-							  <li><label>Numer telefonu</label> <input type="text" name="fname" /></li>
+					
+      				  
+      				  <form:form action="/cinemax/reservation/add/process/next" method="GET" modelAttribute="reservationFormNext" class="dane">
+              
+               				
+               				<ul>
+							  <li><label>Imię</label> <form:input type="text" path="name" /></li>
+							  <li><label>Nazwisko</label> <form:input type="text" path="surname" /></li>
+							  <li><label>E-mail</label> <form:input type="text" path="email" /></li>
+							  <!--<li><label>Powtórz e-mail</label> <form:input type="text" path="email" /></li>-->
+							  <li><label>Numer telefonu</label> <form:input type="text" path="phone" /></li>
 						</ul>
-					</form>
-					
-					
-					
-						<div id="navigation">
-							<div id="previous"><a href="sala.xhtml"><img alt="" src="resources/images/previous.png" /></a></div>
-							<div id="next"><a href="rezerwacje.xhtml"><img alt="" src="resources/images/end.png" /></a></div>
+               				<input type="submit" value="Dodaj" />
+               				
+               				<div id="navigation">
+							<div id="previous"><a href="/cinemax/reservation/add"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
+							<div id="next"><a href="rezerwacje.xhtml"><img alt="" src="/cinemax/resources/images/end.png" /></a></div>
 						</div>
-						
+      				  </form:form>
 					
 				</div>
 

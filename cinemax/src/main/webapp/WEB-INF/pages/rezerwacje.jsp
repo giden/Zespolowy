@@ -11,7 +11,7 @@
     <head>
         <title>Cinemax</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="resources/style.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/cinemax/resources/style.css" media="screen" />
         <link rel="shortcut icon" href="" type="image/x-icon" />
 		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400italic' rel='stylesheet' type='text/css' />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
@@ -94,6 +94,7 @@
 						<hr />
 						 
 						<div id="tab-1" class="tab">
+							
 							<table class="rezerwacje" align="center">
 								<tr>
 									<th>ID</th>
@@ -101,31 +102,24 @@
 									<th>Data</th>
 									<th style="text-align:right">Ustawienia</th>
 								</tr>
-								<tr>
-									<td>1</td>
-									<td>Jan Kowalski</td>
-									<td>2015-01-12</td>
-									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="#">Szczegóły</a>   |   <a href="#">Edytuj</a>   |   <a href="#">Usuń</a>   |   <a href="#" style="color:#ffcb2a; font-weight:bold; text-decoration:underline;">Potwierdź</a></td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Jan Kowalski</td>
-									<td>2015-01-12</td>
-									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="#">Szczegóły</a>   |   <a href="#">Edytuj</a>   |   <a href="#">Usuń</a>   |   <a href="#" style="color:#ffcb2a; font-weight:bold; text-decoration:underline;">Potwierdź</a></td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Jan Kowalski</td>
-									<td>2015-01-12</td>
-									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="#">Szczegóły</a>   |   <a href="#">Edytuj</a>   |   <a href="#">Usuń</a>   |   <a href="#" style="color:#ffcb2a; font-weight:bold; text-decoration:underline;">Potwierdź</a></td>
-								</tr>
+								<c:forEach var="reservation" items="${reservations}">  
+								
+									<tr>
+									<td>${reservation.reservationId}</td>
+									<td>${reservation.name} ${reservation.surname}</td>
+									<td>${reservation.date}</td>
+									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="#">Szczegóły</a>   |   <a href="${pageContext.request.contextPath}/reservation/edit/${reservation.reservationId}.html">Edytuj</a>   |   <a href="${pageContext.request.contextPath}/reservation/delete/${reservation.reservationId}.html">Usuń</a>   |   <a href="#" style="color:#ffcb2a; font-weight:bold; text-decoration:underline;">Potwierdź</a></td>
+									</tr>
+									
+								
+								</c:forEach>
 							</table>
 						</div>
 						
 						
 					<div id="navigation_reservation">
-							<div id="previous"><a href="#"><img alt="" src="resources/images/previous.png" /></a></div>
-							<div id="next"><a href="#"><img alt="" src="resources/images/next.png" /></a></div>
+							<div id="previous"><a href="#"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
+							<div id="next"><a href="#"><img alt="" src="/cinemax/resources/images/next.png" /></a></div>
 					</div>	
 				</div>
 

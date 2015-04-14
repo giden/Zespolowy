@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="" type="image/x-icon" />
 		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400italic' rel='stylesheet' type='text/css' />
 		<link href='${pageContext.request.contextPath}/resources/style.css' rel='stylesheet' type='text/css' />
-		
+			
 		
     </head>
     <body onload='document.loginForm.username.focus();'>
