@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ateam.users.model.Reservation;
+import com.ateam.users.model.Show;
 import com.ateam.users.service.ReservationService;
 import com.springsource.tcserver.serviceability.Constants;
 
@@ -33,7 +35,7 @@ public class ReservationController {
 		return new ModelAndView("sala");
 	}
 	
-	@RequestMapping(value="/reservation/add/process/{seat}")
+	@RequestMapping(value="/sala/add/process/{seat}")
 	public ModelAndView processAdding(@PathVariable Integer seat, HttpSession session) {
 		//fs.addReservation(reservation);
 		//model.addAttribute("reservationForm", reservation);
@@ -52,14 +54,20 @@ public class ReservationController {
 	    return modelAndView;	
 	}
 	
-	@RequestMapping(value="/reservation/add/process/next")
+	@RequestMapping(value="/sala/add/process/next")
 	public ModelAndView processAddingNext(@ModelAttribute("reservationFormNext") Reservation reservation, HttpSession session) {
 		
 		Reservation allReservation = (Reservation) session.getAttribute("REZERWACJA");
 		
 		reservation.setSeat(allReservation.getSeat());
 		
+		
+		Show show = fs.getShowById((Integer) session.getAttribute("show"));
+		
+		reservation.setShow(show);
+		
 		fs.addReservation(reservation);
+		
 		
 		ModelAndView modelAndView = new ModelAndView("redirect:/reservation/list");
 		

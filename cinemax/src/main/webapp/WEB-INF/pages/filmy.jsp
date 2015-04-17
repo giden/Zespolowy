@@ -113,7 +113,11 @@
 							
 								<li>
 								<p class="movie_title">${film.name} </p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
+								<p class="movie_hours">
+								<c:forEach var="show" items="${film.shows}">
+								|	<a href="sala/${show.showId}">${show.date}</a>
+														</c:forEach>
+								</p>
 								<hr />
 								</li>
 								
@@ -121,7 +125,7 @@
 						</c:forEach>
 						</ul>
 						</div>
-						<div id="tab-2" class="tab">
+					<!-- <div id="tab-2" class="tab">
 							<ul>
 								<li>
 								<p class="movie_title">Harry potter</p>
@@ -179,7 +183,7 @@
 								<hr />
 								</li>
 							</ul>
-						</div>
+						</div> -->
 					
 				</div>
 

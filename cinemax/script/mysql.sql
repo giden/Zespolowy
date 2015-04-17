@@ -1,13 +1,15 @@
 USE test;
+
+
+
 drop table user_roles;
-drop table users;/*
-drop table shows;*/
-drop table films;
-/*
+drop table users;
+drop table shows;
+drop table films;/*
 
 drop table seats;
-drop table reservations;
-*/
+drop table reservations;*/
+
 CREATE  TABLE users (
   username VARCHAR(45) NOT NULL,
   password VARCHAR(60) NOT NULL,
@@ -30,6 +32,8 @@ CREATE TABLE films (
 
 );
 
+
+
 CREATE TABLE shows (
 	show_id int(11) NOT NULL AUTO_INCREMENT,
 	show_date datetime NOT NULL,
@@ -37,7 +41,9 @@ CREATE TABLE shows (
 	PRIMARY KEY (show_id),
  	UNIQUE KEY uni_id_date(show_date, film_id),
  	KEY fk_film_idx (film_id),
-	CONSTRAINT fk_film FOREIGN KEY (film_id) REFERENCES films (film_id));
+	CONSTRAINT fk_film FOREIGN KEY (film_id) REFERENCES films (film_id)
+	);
+
 
 CREATE TABLE `reservations` (
   `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -47,9 +53,14 @@ CREATE TABLE `reservations` (
   `reservationemail` varchar(45) NOT NULL,
   `reservationphone` varchar(45) DEFAULT NULL,
   `reservationdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`reservation_id`)
-);
+  show_id int(11) NOT NULL,
+  PRIMARY KEY (`reservation_id`),
+  
+	KEY fk_show_idx (show_id),
+	CONSTRAINT fk_show FOREIGN KEY (show_id) REFERENCES shows (show_id)
 
+);
+	
 CREATE TABLE `seats` (
   `seat_id` int(11) NOT NULL AUTO_INCREMENT,
   `seatnumber` int(11) NOT NULL,
@@ -62,6 +73,9 @@ INSERT INTO users(username,password,enabled)
 VALUES ('pawel','$2a$10$sTb.BBlBTlAwlV66fa0zyuLmNN1iOmbAbLFsjAVvAQwUVhqGmn5Ki', true);
 INSERT INTO users(username,password,enabled)
 VALUES ('rafal','$2a$10$sTb.BBlBTlAwlV66fa0zyuLmNN1iOmbAbLFsjAVvAQwUVhqGmn5Ki', true);
+INSERT INTO users(username,password,enabled)
+VALUES ('jedrzej','$2a$10$sTb.BBlBTlAwlV66fa0zyuLmNN1iOmbAbLFsjAVvAQwUVhqGmn5Ki', true);
+
 
 INSERT INTO user_roles (username, role)
 VALUES ('pawel', 'ROLE_USER');
@@ -69,3 +83,9 @@ INSERT INTO user_roles (username, role)
 VALUES ('pawel', 'ROLE_ADMIN');
 INSERT INTO user_roles (username, role)
 VALUES ('rafal', 'ROLE_USER');
+
+INSERT INTO user_roles (username, role)
+VALUES ('jedrzej', 'ROLE_USER');
+INSERT INTO user_roles (username, role)
+VALUES ('jedrzej', 'ROLE_EMPLOYEE');
+

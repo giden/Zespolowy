@@ -7,13 +7,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ateam.users.dao.ReservationDao;
+import com.ateam.users.dao.ShowDao;
 import com.ateam.users.model.Reservation;
+import com.ateam.users.model.Show;
 
 @Service("reservationService")
 public class ReservationServiceImpl implements ReservationService {
 	
 	@Autowired
 	private ReservationDao reservationDao;
+	
+	@Autowired
+	private ShowDao showDao;
+
 	
 	@Transactional
 	public Integer addReservation(Reservation reservation) {
@@ -45,6 +51,13 @@ public class ReservationServiceImpl implements ReservationService {
 	public List<Reservation> getReservations() {
 		
 		return reservationDao.getReservations();
+	}
+	
+	@Transactional
+	@Override
+	public Show getShowById(Integer id) {
+		
+		return showDao.findByShowId(id);
 	}
 	
 

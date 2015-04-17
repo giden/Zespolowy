@@ -21,7 +21,7 @@ public class Film {
 	
 	
 	private String name;
-	private List<Show> show = new ArrayList<Show>(0);
+	private List<Show> shows = new ArrayList<Show>(0);
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,12 +41,12 @@ public class Film {
 		this.name = name;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "film")
-	public List<Show> getShow() {
-		return show;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "film")
+	public List<Show> getShows() {
+		return shows;
 	}
-	public void setShow(List<Show> show) {
-		this.show = show;
+	public void setShows(List<Show> show) {
+		this.shows = show;
 	}
 
 	

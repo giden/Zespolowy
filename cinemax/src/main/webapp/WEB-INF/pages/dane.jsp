@@ -74,7 +74,7 @@
 					
 					
       				  
-      				  <form:form action="/cinemax/reservation/add/process/next" method="GET" modelAttribute="reservationFormNext" class="dane">
+      				  <form:form action="/cinemax/sala/add/process/next" method="GET" modelAttribute="reservationFormNext" class="dane">
               
                				
                				<ul>

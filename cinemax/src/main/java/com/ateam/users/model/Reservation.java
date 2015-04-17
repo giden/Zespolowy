@@ -13,7 +13,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +28,8 @@ public class Reservation {
 	private Integer seat;
 	private String name, surname, email, phone;
 	private Date date = new Date();
+	
+	private Show show;
 	//private List<Seat> seat = new ArrayList<Seat>(0);
 	
 	@Id
@@ -85,7 +90,16 @@ public class Reservation {
 		this.date = date;
 	}
 	
-	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "reservation")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "show_id", nullable = false)
+	public Show getShow() {
+		return show;
+	}
+	public void setShow(Show show) {
+		this.show = show;
+	}
+	
+	/*@OneToMany(fetch = FetchType.EAGER, mappedBy = "reservation")
 	public List<Seat> getSeat() {
 		return seat;
 	}

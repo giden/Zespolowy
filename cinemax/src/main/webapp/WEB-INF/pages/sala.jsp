@@ -80,8 +80,8 @@
 						<tbody>
 						<tr>
 						<th scope="row">A</th>
-						<td class="noactive" onclick="location.href='/cinemax/reservation/add/process/1''">1</td>
-						<td class="noactive" onclick="location.href='/cinemax/reservation/add/process/2'">2</td>
+						<td class="noactive" onclick="location.href='/cinemax/sala/add/process/1'">1</td>
+						<td class="noactive" onclick="location.href='/cinemax/sala/add/process/2'">2</td>
 						<td class="noactive" onclick="location.href='/cinemax/reservation/add/process/3'">3</td>
 						<td class="noactive" onclick="location.href='/cinemax/reservation/add/process/4'">4</td>
 						<td class="noactive" onclick="location.href='/cinemax/reservation/add/process/5'">5</td>

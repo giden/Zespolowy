@@ -122,15 +122,17 @@
 							
 							<table class="rezerwacje" align="center">
 								<tr>
-									<th>ID</th>
-									<th>Imię i Nazwisko</th>
+									<th>Film</th>
 									<th>Data</th>
+									<th>Imię i Nazwisko</th>
+									<th>Data rezerwacji</th>
 									<th style="text-align:right">Ustawienia</th>
 								</tr>
 								<c:forEach var="reservation" items="${reservations}">  
 								
 									<tr>
-									<td>${reservation.reservationId}</td>
+									<td>${reservation.show.film.name}</td>
+									<td>${reservation.show.date}</td>
 									<td>${reservation.name} ${reservation.surname}</td>
 									<td>${reservation.date}</td>
 									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="#">Szczegóły</a>   |   <a href="${pageContext.request.contextPath}/reservation/edit/${reservation.reservationId}.html">Edytuj</a>   |   <a href="${pageContext.request.contextPath}/reservation/delete/${reservation.reservationId}.html">Usuń</a>   |   <a href="#" style="color:#ffcb2a; font-weight:bold; text-decoration:underline;">Potwierdź</a></td>
