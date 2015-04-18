@@ -3,7 +3,6 @@ package com.ateam.users.dao;
 import java.util.List;
 
 import com.ateam.users.model.Film;
-import com.ateam.users.model.Show;
 
 
 public interface FilmDao {

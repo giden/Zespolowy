@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ateam.users.model.Film;
-import com.ateam.users.model.Show;
 
 @Repository
 public class FilmDaoImpl implements FilmDao {

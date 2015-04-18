@@ -2,13 +2,10 @@ package com.ateam.web.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ateam.users.model.Reservation;
 import com.ateam.users.model.Show;
 import com.ateam.users.service.ReservationService;
-import com.springsource.tcserver.serviceability.Constants;
 
 @Controller
 public class ReservationController {
@@ -46,8 +42,7 @@ public class ReservationController {
 	
 	@RequestMapping(value="/sala/add/process/{seat}")
 	public ModelAndView processAdding(@PathVariable Integer seat, HttpSession session) {
-		//fs.addReservation(reservation);
-		//model.addAttribute("reservationForm", reservation);
+		
 		
 		Reservation reservation = new Reservation();
 		
@@ -98,17 +93,6 @@ public class ReservationController {
         return modelAndView;
     }
     
-    
-    
-    /*@RequestMapping(value= {"/reservation/list", "/reservation"})
-    public ModelAndView listOfTeamsAdmin() {
-        ModelAndView modelAndView = new ModelAndView("reservationAdmin");
-         
-        List<Reservation> reservations = fs.getReservations();
-        modelAndView.addObject("reservations", reservations);
-         
-        return modelAndView;
-    }*/
     
     
     
