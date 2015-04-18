@@ -1,23 +1,22 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="sec"
+﻿<%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <%@page session="true"%>
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Cinemax</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="/cinemax/resources/style.css" media="screen" />
         <link rel="shortcut icon" href="" type="image/x-icon" />
 		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400italic' rel='stylesheet' type='text/css' />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-  </head>
-    <body>
-	
+		<link href='${pageContext.request.contextPath}/resources/style.css' rel='stylesheet' type='text/css' />
+		
+		
+    </head>
+    <body onload='document.loginForm.username.focus();'>
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
@@ -51,47 +50,25 @@
 			<div id="content">
 				<div id="menu">
 					<sec:authorize access="hasRole('ROLE_USER')">
-					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
-					<sec:authorize access="hasRole('ROLE_ADMIN')">|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
-					|	<a href="<c:url value='/show' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie seansami</a>
-					</sec:authorize>
+					<ul>
+						<li><a href="<c:url value='/' />"><img alt="Strona G____wna" src="<c:url value='/resources/images/menu/1.png' />" /></a></li>
+											
+					</ul>
 					</sec:authorize>
 					<sec:authorize ifNotGranted="ROLE_USER">
 					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
 					</sec:authorize>
 				</div>
-
 			
 				<div id="center2">
-				
- 
-
-				
-					<h2>Dane rezerwacji</h2>
+					<h2>Edytuj seans</h2>
 					
-					<p class="movie_title">${show.film.name}<span style="color:#8786c6; font-weight:normal">|</span> <span style="color:#ffcc1c">Piątek / ${show.date} / <span style="font-weight:normal">Godzina:</span> 19:00</span></p>
-					
-					<hr />
-					
-					
-      				  
-      				  <form:form action="/cinemax/sala/add/process/next" method="GET" modelAttribute="reservationFormNext" class="dane">
+					<form:form action="process/${show.showId}" method="GET"  commandName="show" class="dane">
               
-               				
-               				<ul>
-							  <li><label>Imię</label> <form:input type="text" path="name" /></li>
-							  <li><label>Nazwisko</label> <form:input type="text" path="surname" /></li>
-							  <li><label>E-mail</label> <form:input type="text" path="email" /></li>
-							  <!--<li><label>Powtórz e-mail</label> <form:input type="text" path="email" /></li>-->
-							  <li><label>Numer telefonu</label> <form:input type="text" path="phone" /></li>
-						</ul>
-               				<input type="submit" value="Dodaj" />
-               				
-               				<div id="navigation">
-							<div id="previous"><a href="/cinemax/reservation/add"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
-							<div id="next"><a href="rezerwacje.xhtml"><img alt="" src="/cinemax/resources/images/end.png" /></a></div>
-						</div>
+               				<form:input type="date" path="date" />
+               				<input type="submit" value="Update" />
       				  </form:form>
+					
 					
 				</div>
 
@@ -113,6 +90,7 @@
                         </div>
                 </div>
         </div>
+
 
     </body>
 </html>

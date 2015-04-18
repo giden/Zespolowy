@@ -2,6 +2,7 @@ package com.ateam.users.dao;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ateam.users.model.Film;
+import com.ateam.users.model.Show;
 
 @Repository
 public class FilmDaoImpl implements FilmDao {
@@ -51,5 +53,23 @@ public class FilmDaoImpl implements FilmDao {
 	public List<Film> getFilms() {
         return sessionFactory.getCurrentSession().createQuery("from Film").list();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Film findByFilmId(Integer id) {
+
+		List<Film> films = new ArrayList<Film>();
+
+		films = sessionFactory.getCurrentSession().createQuery("from Film where filmId=?").setParameter(0, id)
+				.list();
+
+		if (films.size() > 0) {
+			return films.get(0);
+		} else {
+			return null;
+		}
+
+	}
+	
 
 }

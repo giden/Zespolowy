@@ -43,17 +43,6 @@ public class MainController {
 	}
 	
 
-	@RequestMapping(value = "/sala/{show_id}", method = RequestMethod.GET)
-	public ModelAndView salePage(@PathVariable Integer show_id, HttpSession session) {
-
-		ModelAndView model = new ModelAndView();
-		model.setViewName("sala");
-		
-		session.setAttribute("show", show_id);
-
-		return model;
-
-	}
 
 	@RequestMapping(value = "/rezerwacje**", method = RequestMethod.GET)
 	public ModelAndView reservationPage() {

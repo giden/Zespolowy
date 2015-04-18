@@ -51,8 +51,9 @@
 				<div id="menu">
 					<sec:authorize access="hasRole('ROLE_USER')">
 					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
-					|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
-
+					<sec:authorize access="hasRole('ROLE_ADMIN')">|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
+					|	<a href="<c:url value='/show' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie seansami</a>
+					</sec:authorize>
 					</sec:authorize>
 					<sec:authorize ifNotGranted="ROLE_USER">
 					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
@@ -67,7 +68,7 @@
 				
 					<h2>Wybór miejsca</h2>
 					
-					<p class="movie_title">Hobbit: Bitwa Pięciu Armii 2D / dubbing <span style="color:#8786c6; font-weight:normal">|</span> <span style="color:#ffcc1c">Piątek / 09.01.2015 / <span style="font-weight:normal">Godzina:</span> 19:00</span></p>
+					<p class="movie_title">${show.film.name}<span style="color:#8786c6; font-weight:normal">|</span> <span style="color:#ffcc1c">Piątek / ${show.date} / <span style="font-weight:normal">Godzina:</span> 19:00</span></p>
 					
 					<hr />
 					

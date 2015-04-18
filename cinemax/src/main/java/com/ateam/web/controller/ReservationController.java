@@ -27,12 +27,21 @@ public class ReservationController {
 	private ReservationService fs;
 	
 	
-	@RequestMapping(value="/reservation/add")
-	public ModelAndView viewAdd(Model model) {
-		Reservation reservationForm = new Reservation();
-		model.addAttribute("reservationForm", reservationForm);
+
+	@RequestMapping(value = "/sala/{show_id}", method = RequestMethod.GET)
+	public ModelAndView salePage(@PathVariable Integer show_id, HttpSession session) {
+
+		ModelAndView model = new ModelAndView();
+		model.setViewName("sala");
 		
-		return new ModelAndView("sala");
+		Show show = fs.getShowById(show_id);
+        model.addObject("show", show);
+
+		
+		session.setAttribute("show", show_id);
+
+		return model;
+
 	}
 	
 	@RequestMapping(value="/sala/add/process/{seat}")
@@ -48,8 +57,11 @@ public class ReservationController {
 
 		ModelAndView modelAndView = new ModelAndView("dane");
 		
+		Show show = fs.getShowById((Integer) session.getAttribute("show"));
+
 		modelAndView.addObject("reservationFormNext", reservation);
-		
+		modelAndView.addObject("show", show);
+
 	    
 	    return modelAndView;	
 	}

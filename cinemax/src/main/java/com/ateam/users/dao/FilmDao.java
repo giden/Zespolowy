@@ -3,6 +3,7 @@ package com.ateam.users.dao;
 import java.util.List;
 
 import com.ateam.users.model.Film;
+import com.ateam.users.model.Show;
 
 
 public interface FilmDao {
@@ -12,5 +13,6 @@ public interface FilmDao {
 	Film getFilm(int id);
 	void deleteFilm(int id);
 	List<Film> getFilms();
+	Film findByFilmId(Integer id);
 
 }

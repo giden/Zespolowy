@@ -81,6 +81,7 @@
 					<sec:authorize access="hasRole('ROLE_USER')">
 					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
+					|	<a href="<c:url value='/show' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie seansami</a>
 					</sec:authorize>
 					</sec:authorize>
 					<sec:authorize ifNotGranted="ROLE_USER">

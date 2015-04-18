@@ -1,17 +1,13 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="sec"
+﻿<%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-
-<%@page session="true"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Cinemax</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="/cinemax/resources/style.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/style.css" media="screen" />
         <link rel="shortcut icon" href="" type="image/x-icon" />
 		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400italic' rel='stylesheet' type='text/css' />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
@@ -53,8 +49,8 @@
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
-			<div id="like_it">
-			<!-- For login user -->
+			<div id="like_it"><sec:authorize access="hasRole('ROLE_USER')">
+		<!-- For login user -->
 		<c:url value="/logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
 		<div>
@@ -73,81 +69,57 @@
 					href="javascript:formSubmit()"> Wyloguj</a>
 			
 		</c:if>
-					
-			</div>
+
+	</sec:authorize>
+	<sec:authorize ifNotGranted="ROLE_USER">
+		<a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a>
+	</sec:authorize></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<!--<ul>
-						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
-											<li><img alt="" src="images/menu/l.png" /></li>
-					</ul>-->
-					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
-					|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
-					   |   <a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj rezerwację</a>
-					      |   <a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Klienci</a>
-					         |   <a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj klienta</a></div>
+					<sec:authorize access="hasRole('ROLE_USER')">
+					<ul>
+						<li><a href="<c:url value='/' />"><img alt="Strona G____wna" src="<c:url value='/resources/images/menu/1.png' />" /></a></li>
+											
+					</ul>
+					</sec:authorize>
+					<sec:authorize ifNotGranted="ROLE_USER">
+					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
+					</sec:authorize>
+				</div>
 
 			
 				<div id="center2">
 				
- 
-
-				
-					<h2>Rezerwacje</h2>
+					<br><br>
+					<div class="tabs3">
+					<a class="active" href="${pageContext.request.contextPath}/show/add"> DODAJ SEANS </a>
+					</div>
+					<h2>Wybór seansu</h2>
 					
-						<ul class="tabs" style="float: left; display:block">
-								<li class="active"><a href="#tab-1" class="active">wszystkie</a></li>
-								<li><a href="#tab-2">pt.</a></li>
-								<li><a href="#tab-3">sob.</a></li>
-								<li><a href="#tab-4">niedz.</a></li>
-								<li><a href="#tab-5">pon.</a></li>
-								<li><a href="#tab-6">wt.</a></li>
-								<li><a href="#tab-7">śr.</a></li>
-								<li><a href="#tab-8">czw.</a></li>
-						</ul>
 						
-						<form action="#" class="szukaj" style="float:right; display:block">
-						<ul>
-							  <li><label>Szukaj</label> <input type="text" name="fname" /></li>
-						</ul>
-						</form>
-						
-						<div style="clear:both"></div>
-						
-						<hr />
 						 
 						<div id="tab-1" class="tab">
+						<ul>
+						<c:forEach var="show" items="${shows}">  
 							
-							<table class="rezerwacje" align="center">
-								<tr>
-									<th>Film</th>
-									<th>Data</th>
-									<th>Imię i Nazwisko</th>
-									<th>Data rezerwacji</th>
-									<th style="text-align:right">Ustawienia</th>
-								</tr>
-								<c:forEach var="reservation" items="${reservations}">  
+								<li>
+								<p class="movie_title">${show.film.name} </p>
+								<p class="movie_hours">${show.date}</p>
 								
-									<tr>
-									<td>${reservation.show.film.name}</td>
-									<td>${reservation.show.date}</td>
-									<td>${reservation.name} ${reservation.surname}</td>
-									<td>${reservation.date}</td>
-									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="#">Szczegóły</a>   |   <a href="${pageContext.request.contextPath}/reservation/edit/${reservation.reservationId}.html">Edytuj</a>   |   <a href="${pageContext.request.contextPath}/reservation/delete/${reservation.reservationId}.html">Usuń</a>   |   <a href="#" style="color:#ffcb2a; font-weight:bold; text-decoration:underline;">Potwierdź</a></td>
-									</tr>
-									
+								 <br><br><ul class="tabs2"><li><a href="${pageContext.request.contextPath}/show/edit/${show.showId}.html">Edit</a></li>   |   <li><a href="${pageContext.request.contextPath}/show/delete/${show.showId}.html">Delete</a>
+								</li></ul><br><br>
+								<hr />
 								
-								</c:forEach>
-							</table>
+								  								</li>
+								
+							
+						</c:forEach>
+						</ul>
 						</div>
 						
-						
-					<div id="navigation_reservation">
-							<div id="previous"><a href="#"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
-							<div id="next"><a href="#"><img alt="" src="/cinemax/resources/images/next.png" /></a></div>
-					</div>	
+					
 				</div>
 
 			<div style="clear:both;"></div>

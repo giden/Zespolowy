@@ -16,6 +16,7 @@ public class FilmServiceImpl implements FilmService {
 	private FilmDao filmDao;
 	
 	@Transactional
+	@Override
 	public Integer addFilm(Film film) {
 	
 		return filmDao.addFilm(film);
