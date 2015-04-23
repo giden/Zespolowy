@@ -1,17 +1,22 @@
 USE test;
 
-
-
 drop table user_roles;
 drop table users;
+
+drop table reservations;
+
+
 drop table shows;
-drop table films;/*
+drop table films;
 
 drop table seats;
-drop table reservations;*/
 
 CREATE  TABLE users (
   username VARCHAR(45) NOT NULL,
+  name VARCHAR(45) NULL,
+  surname VARCHAR(45) NULL,
+  email VARCHAR(45) NULL,
+  phone VARCHAR(45) NULL,
   password VARCHAR(60) NOT NULL,
   enabled TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (username));
@@ -32,8 +37,6 @@ CREATE TABLE films (
 
 );
 
-
-
 CREATE TABLE shows (
 	show_id int(11) NOT NULL AUTO_INCREMENT,
 	show_date datetime NOT NULL,
@@ -42,7 +45,7 @@ CREATE TABLE shows (
  	UNIQUE KEY uni_id_date(show_date, film_id),
  	KEY fk_film_idx (film_id),
 	CONSTRAINT fk_film FOREIGN KEY (film_id) REFERENCES films (film_id)
-	);
+);
 
 
 CREATE TABLE `reservations` (
@@ -63,8 +66,12 @@ CREATE TABLE `reservations` (
 	
 CREATE TABLE `seats` (
   `seat_id` int(11) NOT NULL AUTO_INCREMENT,
-  `seatnumber` int(11) NOT NULL,
-  PRIMARY KEY (`seat_id`)
+  `seat_name` int(11) NOT NULL,
+  reservation_id int(11) NOT NULL,
+  PRIMARY KEY (`seat_id`),
+  UNIQUE KEY uni_id_name(seat_name, reservation_id),
+  KEY fk_reservation_idx (reservation_id),
+  CONSTRAINT fk_reservation FOREIGN KEY (reservation_id) REFERENCES reservations (reservation_id)
 );
 
 
@@ -82,10 +89,12 @@ VALUES ('pawel', 'ROLE_USER');
 INSERT INTO user_roles (username, role)
 VALUES ('pawel', 'ROLE_ADMIN');
 INSERT INTO user_roles (username, role)
+VALUES ('pawel', 'ROLE_EMPLOYEE');
+
+INSERT INTO user_roles (username, role)
 VALUES ('rafal', 'ROLE_USER');
 
 INSERT INTO user_roles (username, role)
 VALUES ('jedrzej', 'ROLE_USER');
 INSERT INTO user_roles (username, role)
 VALUES ('jedrzej', 'ROLE_EMPLOYEE');
-

@@ -1,5 +1,7 @@
 package com.ateam.users.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,5 +41,34 @@ public class UserServiceImpl implements UserService {
 		return id;
 		
 	}
+	@Override
+	@Transactional
+	public void updateUser(User user, String username) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode(user.getPassword()));
+		
+		ud.updateUser(user, username);
+	}
+	
+	@Override
+	@Transactional
+	public User getUser(String username) {
+		return ud.getUser(username);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteUser(String username) {
+		ud.deleteUser(username);
+	}
+	
+	@Override
+	@Transactional
+	public List<User> getUsers(){
+		
+		return ud.getUsers();
+	}
+	
+	
 
 }
