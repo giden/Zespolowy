@@ -50,6 +50,7 @@
 		<div id="wrap2">
 			<div id="logo"></div>
 			<div id="like_it">
+			<sec:authorize access="hasRole('ROLE_USER')">
 		<!-- For login user -->
 		<c:url value="/logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
@@ -70,121 +71,29 @@
 			
 		</c:if>
 
-	</div>
+	</sec:authorize>
+	<sec:authorize ifNotGranted="ROLE_USER">
+		<a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a>
+	</sec:authorize></div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
-					|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
-					|	<a href="<c:url value='/show' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie seansami</a>
-					|	<a href="<c:url value='/user' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie użytkownikami</a>
-				
+					<!--<ul>
+						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
+											<li><img alt="" src="images/menu/l.png" /></li>
+					</ul>-->
+					<sec:authorize ifNotGranted="ROLE_USER">
+					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
+					</sec:authorize>
 				</div>
 
 			
-				<div id="center2">
-				
-					<br><br>
-					<div class="tabs3">
-					<a class="active" href="${pageContext.request.contextPath}/film/add"> DODAJ FILM </a>
-					</div>
-					<h2>Wybór filmu</h2>
-					
-						<ul class="tabs">
-								<li class="active"><a href="#tab-1" class="active">pt.</a></li>
-								<li><a href="#tab-2">sob.</a></li>
-								<li><a href="#tab-3">niedz.</a></li>
-								<li><a href="#tab-4">pon.</a></li>
-								<li><a href="#tab-5">wt.</a></li>
-								<li><a href="#tab-6">śr.</a></li>
-								<li><a href="#tab-7">czw.</a></li>
-						</ul>
-						 
-						<div id="tab-1" class="tab">
+				 <c:if test="${not empty message}">
+							<div class="msg">${message}</div>
+						</c:if>
 						
-						<ul>
-						<c:forEach var="film" items="${films}">  
-							
-								<li>
-								<p class="movie_title">${film.name} </p>
-								<p class="movie_hours">
-								<c:forEach var="show" items="${film.shows}">
-								|	<a href="${pageContext.request.contextPath}/sala/${show.showId}">${show.date}</a>
-														</c:forEach>
-								</p>
-								
-								 <br><br><ul class="tabs2"><li><a href="${pageContext.request.contextPath}/film/edit/${film.filmId}.html">Edit</a></li>   |   <li><a href="${pageContext.request.contextPath}/film/delete/${film.filmId}.html">Delete</a>
-								</li></ul><br><br>
-								<hr />
-								
-								  								</li>
-								
-							
-						</c:forEach>
-						</ul>
-						</div>
-						<div id="tab-2" class="tab">
-							<ul>
-								<li>
-								<p class="movie_title">Harry potter</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-3" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">Matrix</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-4" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">Spider-Man</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-5" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">James Bond</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-6" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">Labirynt</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-7" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">Wkręceni 2</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-								<li>
-								<p class="movie_title">Labirynt</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-					
-				</div>
+				<a href="<c:url value='/user/list' />"> kontynuuj </a>
 
 			<div style="clear:both;"></div>
 			</div>

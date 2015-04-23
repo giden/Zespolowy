@@ -126,10 +126,7 @@
 						</div>
 						
 						
-					<div id="navigation_reservation">
-							<div id="previous"><a href="#"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
-							<div id="next"><a href="#"><img alt="" src="/cinemax/resources/images/next.png" /></a></div>
-					</div>	
+					
 				</div>
 
 			<div style="clear:both;"></div>

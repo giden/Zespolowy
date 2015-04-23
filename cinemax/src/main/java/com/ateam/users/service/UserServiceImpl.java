@@ -69,6 +69,27 @@ public class UserServiceImpl implements UserService {
 		return ud.getUsers();
 	}
 	
+	@Override
+	@Transactional
+	public List<UserRole> getRoles(String username){
+		
+		return rd.getByUser(username);
+	}
+	@Override
+	@Transactional
+	public void deleteRole(String role, String username) {
+		
+		UserRole ur = rd.getByUserAndRole(username, role);
+		rd.deleteRole(ur);
+		
+	}
+	@Override
+	@Transactional
+	public void createRole(UserRole role) {
+		rd.createRole(role);
+		
+	}
+	
 	
 
 }
