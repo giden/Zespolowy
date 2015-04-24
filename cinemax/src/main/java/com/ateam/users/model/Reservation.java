@@ -1,8 +1,11 @@
 package com.ateam.users.model;
 
 //import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +26,7 @@ public class Reservation {
 	private Integer seat;
 	private String name, surname, email, phone;
 	private Date date = new Date();
+	private List<Seat> seats = new ArrayList<Seat>(0);
 	
 	private Show show;
 	//private List<Seat> seat = new ArrayList<Seat>(0);
@@ -68,13 +73,7 @@ public class Reservation {
 		this.phone = phone;
 	}
 	
-	@Column(name = "reservationseat", unique = true, nullable = false)
-	public Integer getSeat() {
-		return seat;
-	}
-	public void setSeat(Integer seat) {
-		this.seat = seat;
-	}
+
 	
 	@Column(name = "reservationdate", unique = false, nullable = true)
 	public Date getDate() {
@@ -91,6 +90,14 @@ public class Reservation {
 	}
 	public void setShow(Show show) {
 		this.show = show;
+	}
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "reservation", cascade = CascadeType.ALL)
+	public List<Seat> getSeats() {
+		return seats;
+	}
+	public void setSeats(List<Seat> seat) {
+		this.seats = seat;
 	}
 	
 	/*@OneToMany(fetch = FetchType.EAGER, mappedBy = "reservation")

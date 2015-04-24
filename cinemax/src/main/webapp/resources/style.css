@@ -923,15 +923,8 @@ h3 {
 .sala {border-spacing: 0.4rem;}
 
 .sala td {
-text-decoration: none;
-border-radius: 8px;
-font-family:tahoma, verdana, arial;
-font-size: 12px;
-font-weight:bold;
+
 width:30px;
-height:30px;
-text-align:center;
-color:white
 }
 
 .rezerwacje {border-spacing: 0.4rem;
@@ -963,6 +956,10 @@ text-align:left;
 
 .noactive {
 background-color: #4b4685;
+}
+
+.nonoactive {
+background-color:#ff2c2c;
 }
 
 .active {
@@ -1079,7 +1076,7 @@ line-height:28px;
 color:white;
 }
 
-.dane input {
+.dane input, #sala {
 display: inline-block;
 border: 1px solid #535282;
 background:#1c1b3e;
@@ -1133,3 +1130,79 @@ form li {
 list-style:none;
 margin-bottom:20px;
 }
+
+
+
+
+/*We will import 2 fonts*/
+/*fontawesome iconfont*/
+@import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);
+/*Montserrat for the text*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat); 
+
+
+
+/*Adding custom checkbox icons*/
+#labelus {
+	position: relative;
+	padding-left: 0px;
+	cursor: pointer;
+	border-radius:5px;
+	width:30px;
+	font-family: tahoma, verdana, arial;
+  font-size: 12px;
+  font-weight: bold;
+  text-align:center;
+  color:white;
+}
+
+#labelus.active {
+	
+	background-color:#ffb200;
+}
+
+#labelus:before, #labelus:after {
+	
+	font-family: FontAwesome;
+	font-size: 21px;
+	/*absolutely positioned*/
+	position: absolute; top: 0; left: 0;
+	text-decoration: none;
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: white;
+  line-height:30px;
+}
+
+#labelus:before {/*unchecked*/
+	
+}
+#labelus:after {
+	/*checked icon will be hidden by default by using 0 max-width and overflow hidden*/
+	padding:0;
+	opacity: 0;
+	/*CSS3 transitions for animated effect*/
+	background:yellow;
+}
+
+/*hiding the original checkboxes*/
+input[type="checkbox"] {
+	display: none;
+}
+/*when the user checks the checkbox the checked icon will animate in*/
+input[type="checkbox"]:checked + #labelus:after {
+	 /*an arbitratry number more than the icon's width*/
+	opacity: 1; /*for fade in effect*/
+}
+
+
+
+
+
+
+
+
+
+

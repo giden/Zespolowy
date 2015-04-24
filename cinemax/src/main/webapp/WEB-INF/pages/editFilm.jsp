@@ -49,15 +49,11 @@
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<sec:authorize access="hasRole('ROLE_USER')">
-					<ul>
-						<li><a href="<c:url value='/' />"><img alt="Strona G____wna" src="<c:url value='/resources/images/menu/1.png' />" /></a></li>
-											
-					</ul>
-					</sec:authorize>
-					<sec:authorize ifNotGranted="ROLE_USER">
-					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
-					</sec:authorize>
+					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
+					|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
+					|	<a href="<c:url value='/show' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie seansami</a>
+					|	<a href="<c:url value='/user' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie użytkownikami</a>
+				
 				</div>
 			
 				<div id="center2">

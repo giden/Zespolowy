@@ -62,13 +62,26 @@ public class MainController {
 
 	}
 	
-	@RequestMapping(value = "/redirect**", method = RequestMethod.GET)
+	@RequestMapping(value = "/redirect", method = RequestMethod.GET)
 	public ModelAndView redirectPage() {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect");
 		
-		String message = "Film was successfully added.";
+		String message = "Film was successfully edited.";
+	    model.addObject("message", message);
+
+		return model;
+
+	}
+	
+	@RequestMapping(value = "/redirectUsers", method = RequestMethod.GET)
+	public ModelAndView redirectUseraPage() {
+
+		ModelAndView model = new ModelAndView();
+		model.setViewName("redirectUsers");
+		
+		String message = "User was successfully edited.";
 	    model.addObject("message", message);
 
 		return model;

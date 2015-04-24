@@ -49,6 +49,12 @@ public class ReservationDaoImpl implements ReservationDao {
 	        	sessionFactory.getCurrentSession().delete(team);
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Reservation> getReservationsShow(Integer id) {
+        return sessionFactory.getCurrentSession().createQuery("from Reservation where show="+id).list();
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

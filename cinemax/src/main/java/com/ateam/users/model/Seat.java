@@ -2,9 +2,12 @@ package com.ateam.users.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +16,8 @@ public class Seat {
 	
 	private Integer seatId;
 	
-	private Integer seatNumber;
+	private String seatName;
+	private Reservation reservation;
 	//private List<Show> show = new ArrayList<Show>(0);
 	
 	@Id
@@ -26,12 +30,21 @@ public class Seat {
 		this.seatId = seatId;
 	}
 	
-	@Column(name = "seatnumber", unique = true, nullable = false)
-	public Integer getSeatNumber() {
-		return seatNumber;
+	@Column(name = "seat_name", unique = true, nullable = false)
+	public String getSeatName() {
+		return seatName;
 	}
-	public void setSeatNumber(Integer seatNumber) {
-		this.seatNumber = seatNumber;
+	public void setSeatName(String seatName) {
+		this.seatName = seatName;
+	}
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "reservation_id", nullable = false)
+	public Reservation getReservation() {
+		return reservation;
+	}
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
 	}
 	
 	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "seat")

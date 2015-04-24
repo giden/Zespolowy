@@ -79,18 +79,20 @@
               
                				
                				<ul>
-							  <li><label>Imię</label> <form:input type="text" path="name" /></li>
-							  <li><label>Nazwisko</label> <form:input type="text" path="surname" /></li>
-							  <li><label>E-mail</label> <form:input type="text" path="email" /></li>
+               				
+							  <li><label>Imię</label> <form:input type="text" path="name" value="${pageContext.request.userPrincipal.name}" /></li>
+							  <li><label>Nazwisko</label> <form:input type="text" path="surname" value="${surname}" /></li>
+							  <li><label>E-mail</label> <form:input type="text" path="email" value="${email}" /></li>
 							  <!--<li><label>Powtórz e-mail</label> <form:input type="text" path="email" /></li>-->
-							  <li><label>Numer telefonu</label> <form:input type="text" path="phone" /></li>
+							  <li><label>Numer telefonu</label> <form:input type="text" path="phone" value="${phone}" /></li>
+							
 						</ul>
                				<input type="submit" value="Dodaj" />
                				
-               				<div id="navigation">
+               				<!--  <div id="navigation">
 							<div id="previous"><a href="/cinemax/reservation/add"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
 							<div id="next"><a href="rezerwacje.xhtml"><img alt="" src="/cinemax/resources/images/end.png" /></a></div>
-						</div>
+						</div>-->
       				  </form:form>
 					
 				</div>

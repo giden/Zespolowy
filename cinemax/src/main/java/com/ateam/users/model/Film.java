@@ -4,6 +4,7 @@ package com.ateam.users.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,7 +42,7 @@ public class Film {
 		this.name = name;
 	}
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "film")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "film",cascade = CascadeType.ALL)
 	public List<Show> getShows() {
 		return shows;
 	}

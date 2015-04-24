@@ -5,6 +5,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -54,7 +55,7 @@ public class Show {
 		this.film = film;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "show")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "show", cascade = CascadeType.ALL)
 	public List<Reservation> getReservations() {
 		return reservations;
 	}

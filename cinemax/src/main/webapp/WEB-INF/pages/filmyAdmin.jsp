@@ -49,7 +49,7 @@
 	<div id="wrap">
 		<div id="wrap2">
 			<div id="logo"></div>
-			<div id="like_it"><sec:authorize access="hasRole('ROLE_USER')">
+			<div id="like_it">
 		<!-- For login user -->
 		<c:url value="/logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
@@ -70,23 +70,16 @@
 			
 		</c:if>
 
-	</sec:authorize>
-	<sec:authorize ifNotGranted="ROLE_USER">
-		<a href="<c:url value='/login' />"><img alt="" src="<c:url value='/resources/images/zaloguj.png' />" /></a>
-	</sec:authorize></div>
+	</div>
 			<div class="clear"></div>
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<sec:authorize access="hasRole('ROLE_USER')">
-					<ul>
-						<li><a href="<c:url value='/' />"><img alt="Strona G____wna" src="<c:url value='/resources/images/menu/1.png' />" /></a></li>
-											
-					</ul>
-					</sec:authorize>
-					<sec:authorize ifNotGranted="ROLE_USER">
-					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
-					</sec:authorize>
+					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
+					|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
+					|	<a href="<c:url value='/show' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie seansami</a>
+					|	<a href="<c:url value='/user' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie użytkownikami</a>
+				
 				</div>
 
 			
@@ -98,7 +91,7 @@
 					</div>
 					<h2>Wybór filmu</h2>
 					
-						<ul class="tabs">
+						<!--  <ul class="tabs">
 								<li class="active"><a href="#tab-1" class="active">pt.</a></li>
 								<li><a href="#tab-2">sob.</a></li>
 								<li><a href="#tab-3">niedz.</a></li>
@@ -106,7 +99,7 @@
 								<li><a href="#tab-5">wt.</a></li>
 								<li><a href="#tab-6">śr.</a></li>
 								<li><a href="#tab-7">czw.</a></li>
-						</ul>
+						</ul>-->
 						 
 						<div id="tab-1" class="tab">
 						
@@ -115,7 +108,11 @@
 							
 								<li>
 								<p class="movie_title">${film.name} </p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
+								<p class="movie_hours">
+								<c:forEach var="show" items="${film.shows}">
+								|	<a href="${pageContext.request.contextPath}/sala/${show.showId}">${show.date}</a>
+														</c:forEach>
+								</p>
 								
 								 <br><br><ul class="tabs2"><li><a href="${pageContext.request.contextPath}/film/edit/${film.filmId}.html">Edit</a></li>   |   <li><a href="${pageContext.request.contextPath}/film/delete/${film.filmId}.html">Delete</a>
 								</li></ul><br><br>
@@ -127,7 +124,7 @@
 						</c:forEach>
 						</ul>
 						</div>
-						<div id="tab-2" class="tab">
+						<!--  <div id="tab-2" class="tab">
 							<ul>
 								<li>
 								<p class="movie_title">Harry potter</p>
@@ -186,7 +183,7 @@
 								</li>
 							</ul>
 						</div>
-					
+					-->
 				</div>
 
 			<div style="clear:both;"></div>
