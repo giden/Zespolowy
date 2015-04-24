@@ -65,7 +65,7 @@ CREATE TABLE `reservations` (
 	
 CREATE TABLE `seats` (
   `seat_id` int(11) NOT NULL AUTO_INCREMENT,
-  `seat_name` int(11) NOT NULL,
+  `seat_name` VARCHAR(45) NOT NULL,
   reservation_id int(11) NOT NULL,
   PRIMARY KEY (`seat_id`),
   UNIQUE KEY uni_id_name(seat_name, reservation_id),
