@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ateam.users.model.Film;
 import com.ateam.users.model.Reservation;
 import com.ateam.users.model.Seat;
 import com.ateam.users.model.Show;
@@ -67,13 +65,6 @@ public class ReservationController {
 		
 		
 		Reservation reservation = new Reservation();
-		
-		
-		
-		
-	    
-		//reservation.setSeat(seat);
-		
 		session.setAttribute("REZERWACJA", reservation);
 
 		ModelAndView modelAndView = new ModelAndView("dane");
@@ -109,11 +100,8 @@ public class ReservationController {
 	
 	@RequestMapping(value="/sala/add/process/next")
 	public ModelAndView processAddingNext(@ModelAttribute("reservationFormNext") Reservation reservation, HttpSession session) {
-		
-		Reservation allReservation = (Reservation) session.getAttribute("REZERWACJA");
-		
-		//reservation.setSeat(allReservation.getSeat());
-		
+						
+		@SuppressWarnings("unchecked")
 		List<String> miejsca = (List<String>) session.getAttribute("MIEJSCA");
 		
 		

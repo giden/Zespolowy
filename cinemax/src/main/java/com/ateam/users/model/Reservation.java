@@ -23,7 +23,6 @@ public class Reservation {
 	
 	private Integer reservationId;
 	
-	private Integer seat;
 	private String name, surname, email, phone;
 	private Date date = new Date();
 	private List<Seat> seats = new ArrayList<Seat>(0);

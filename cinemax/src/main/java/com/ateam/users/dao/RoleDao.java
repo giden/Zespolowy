@@ -2,7 +2,6 @@ package com.ateam.users.dao;
 
 import java.util.List;
 
-import com.ateam.users.model.User;
 import com.ateam.users.model.UserRole;
 
 public interface RoleDao {
