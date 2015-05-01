@@ -12,12 +12,12 @@ System rezerwacji biletów
 
 **Plan na II semestr:**
 - panel logowania/rejestracji DONE
-- CRUD dla bazy danych klientów/pracowników, filmów oraz rezerwacji IN PROGRESS
+- CRUD dla bazy danych klientów/pracowników, filmów oraz rezerwacji DONE
 - dodać rolę pracownik DONE
 - crud seansow DONE
 - seanse do filmów, rezerwacje do seansów DONE
-- wybór miejsc do rezerwacji wielokrotny
-- dodać cruda dla userów 
-- user zalogowany do rezerwacji
-- obsługa zakladek filmów i seansów
-- szukajka w rezerwacji
+- wybór miejsc do rezerwacji wielokrotny IN PROGRESS: zabezpieczyć przed multiseat
+- dodać cruda dla userów DONE
+- user zalogowany do rezerwacji DONE
+- obsługa zakladek filmów i seansów TODO
+- szukajka w rezerwacji TODO

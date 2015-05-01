@@ -41,7 +41,8 @@ public class UserDaoImpl implements UserDao {
 	public void updateUser(User user, String username) {
 		User userToUpdate = getUser(username);
         userToUpdate.setEmail(user.getEmail());
-        userToUpdate.setPassword(user.getPassword());
+        if(!user.getPassword().isEmpty()) {
+        userToUpdate.setPassword(user.getPassword());}
         userToUpdate.setPhone(user.getPhone());
         userToUpdate.setSurname(user.getSurname());
         userToUpdate.setName(user.getName());

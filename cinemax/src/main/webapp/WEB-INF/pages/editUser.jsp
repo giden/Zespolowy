@@ -47,8 +47,8 @@
 				<div id="menu">
 					
 					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
-					|	<a href="<c:url value='/user/list' />" style="color:white; padding-right:10px; padding-left:10px">Lista userów</a>
-					   |   <a href="<c:url value='/user/add' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj usera</a>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">|	<a href="<c:url value='/user/list' />" style="color:white; padding-right:10px; padding-left:10px">Lista userów</a>
+					   |   <a href="<c:url value='/user/add' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj usera</a></sec:authorize>
 					      
 				</div>
 			

@@ -91,6 +91,8 @@ public class ReservationController {
 		modelAndView.addObject("surname", user.getSurname());
 		modelAndView.addObject("phone", user.getPhone());
 		modelAndView.addObject("email", user.getEmail());
+		modelAndView.addObject("name", user.getName());
+
 		}
 		
 

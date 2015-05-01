@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -66,6 +68,21 @@ public class UserController {
         return modelAndView;
     }
     
+    @RequestMapping(value="/profile/edit", method=RequestMethod.GET)
+    public ModelAndView editUserbyUser() {
+        ModelAndView modelAndView = new ModelAndView("editUser");
+
+    	
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userName =  auth.getName();
+    	
+    	        User user = us.getUser(userName);
+        
+        
+        modelAndView.addObject("userForm",user);
+        return modelAndView;
+    }
+    
     
     @RequestMapping(value="/user/roles/{username}", method=RequestMethod.GET)
     public ModelAndView getUser(@PathVariable String username) {
@@ -85,6 +102,19 @@ public class UserController {
     public ModelAndView editingFilm(@ModelAttribute("userForm") User user, @PathVariable String username) {
          
         ModelAndView modelAndView = new ModelAndView("redirect:/redirectUsers");
+         
+        us.updateUser(user, username);
+         
+        String message = "User was successfully edited.";
+        modelAndView.addObject("message", message);
+         
+        return modelAndView;
+    }
+    
+    @RequestMapping(value="/profile/process/{username}", method=RequestMethod.GET)
+    public ModelAndView editingUserbyUser(@ModelAttribute("userForm") User user, @PathVariable String username) {
+         
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
          
         us.updateUser(user, username);
          

@@ -80,7 +80,7 @@
                				
                				<ul>
                				
-							  <li><label>Imię</label> <form:input type="text" path="name" value="${pageContext.request.userPrincipal.name}" /></li>
+							  <li><label>Imię</label> <form:input type="text" path="name" value="${name}" /></li>
 							  <li><label>Nazwisko</label> <form:input type="text" path="surname" value="${surname}" /></li>
 							  <li><label>E-mail</label> <form:input type="text" path="email" value="${email}" /></li>
 							  <!--<li><label>Powtórz e-mail</label> <form:input type="text" path="email" /></li>-->

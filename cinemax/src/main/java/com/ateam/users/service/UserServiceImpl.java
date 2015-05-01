@@ -44,8 +44,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void updateUser(User user, String username) {
+		if(!user.getPassword().isEmpty()) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
+		}
 		
 		ud.updateUser(user, username);
 	}
