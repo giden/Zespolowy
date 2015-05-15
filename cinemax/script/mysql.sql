@@ -1,13 +1,13 @@
 USE test;
-/*
-drop table user_roles;
-drop table users;*/
+
+drop table IF EXISTS user_roles;
+drop table IF EXISTS users ;
 
 
-drop table seats;
-drop table reservations;
-drop table shows;
-drop table films;
+drop table IF EXISTS seats;
+drop table IF EXISTS reservations;
+drop table IF EXISTS shows;
+drop table IF EXISTS films;
 
 CREATE  TABLE users (
   username VARCHAR(45) NOT NULL,

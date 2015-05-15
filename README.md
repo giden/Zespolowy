@@ -20,4 +20,4 @@ System rezerwacji biletów
 - dodać cruda dla userów DONE
 - user zalogowany do rezerwacji DONE
 - obsługa zakladek filmów i seansów TODO
-- szukajka w rezerwacji TODO
+- szukajka w rezerwacji DONE
