@@ -1,6 +1,5 @@
 package com.ateam.users.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,7 +39,7 @@ public class Seat {
 		this.seatName = seatName;
 	}
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "reservation_id", nullable = false)
 	public Reservation getReservation() {
 		return reservation;

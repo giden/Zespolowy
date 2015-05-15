@@ -42,7 +42,7 @@ public class Film {
 		this.name = name;
 	}
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "film",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "film",cascade = CascadeType.ALL)
 	public List<Show> getShows() {
 		return shows;
 	}

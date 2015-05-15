@@ -135,7 +135,7 @@ public class ReservationController {
 	
 	 
     @RequestMapping(value="/reservation/list")
-    public ModelAndView listOfTeams() {
+    public ModelAndView listOfReservations() {
         ModelAndView modelAndView = new ModelAndView("rezerwacje");
         Reservation reservation = new Reservation();
          

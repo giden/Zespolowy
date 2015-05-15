@@ -5,6 +5,7 @@ package com.ateam.users.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +37,8 @@ public class FilmDaoImpl implements FilmDao {
 	@Override
 	public Film getFilm(int id) {
 		Film film = (Film) sessionFactory.getCurrentSession().get(Film.class, id);
+		Hibernate.initialize(film.getShows());
+		
 	    return film;
 	}
 

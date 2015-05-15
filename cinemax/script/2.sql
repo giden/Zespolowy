@@ -20,7 +20,7 @@ INSERT INTO shows(film_id, show_date)
 VALUES (1, "2010-02-02 16:00:00");
 
 INSERT INTO shows(film_id, show_date)
-VALUES (1, "2010-02-02 24:00:00");
+VALUES (1, "2010-02-02 00:00:00");
 
 INSERT INTO shows(film_id, show_date)
 VALUES (1, "2010-02-03 10:00:00");

@@ -58,6 +58,7 @@ public class ShowDaoImpl implements ShowDao {
 		Show showToDelete = getShow(id);
 	        if (showToDelete != null)
 	        	sessionFactory.getCurrentSession().delete(showToDelete);
+	        
 		
 	}
 

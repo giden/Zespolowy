@@ -129,6 +129,8 @@
 									<th>Data</th>
 									<th>Imię i Nazwisko</th>
 									<th>Data rezerwacji</th>
+									<th>Miejsce</th>
+
 									<th style="text-align:right">Ustawienia</th>
 								</tr>
 								<c:forEach var="reservation" items="${reservations}">  
@@ -138,7 +140,10 @@
 									<td>${reservation.show.date}</td>
 									<td>${reservation.name} ${reservation.surname}</td>
 									<td>${reservation.date}</td>
-									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="#">Szczegóły</a>   |   <a href="${pageContext.request.contextPath}/reservation/edit/${reservation.reservationId}.html">Edytuj</a>   |   <a href="${pageContext.request.contextPath}/reservation/delete/${reservation.reservationId}.html">Usuń</a>   |   <a href="#" style="color:#ffcb2a; font-weight:bold; text-decoration:underline;">Potwierdź</a></td>
+									<td><c:forEach var="seat" items="${reservation.seats}"> ${seat.seatName } 
+																	</c:forEach></td>
+									
+									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="${pageContext.request.contextPath}/reservation/edit/${reservation.reservationId}">Edytuj</a>   |   <a href="${pageContext.request.contextPath}/reservation/delete/${reservation.reservationId}">Usuń</a></td>
 									</tr>
 									
 								

@@ -39,6 +39,8 @@ public class AppConfig extends WebMvcConfigurerAdapter{
         prop.put("hibernate.format_sql", "true");
         prop.put("hibernate.show_sql", "true");
         prop.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        prop.put(org.hibernate.cfg.Environment.ENABLE_LAZY_LOAD_NO_TRANS, true);
+
         return prop;
     }
 	
