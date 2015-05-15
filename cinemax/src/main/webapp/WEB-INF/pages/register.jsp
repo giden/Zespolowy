@@ -39,7 +39,7 @@
 					<h2>Panel rejestracji</h2>
 				
 					
-					<form:form action="register/process" method="GET" modelAttribute="userForm" class="dane">
+					<form:form action="register/process" method="POST" modelAttribute="userForm" class="dane">
               
                				<form:input path="username" />
                				<form:password path="password" />

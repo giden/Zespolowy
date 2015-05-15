@@ -104,7 +104,7 @@
 								<p class="movie_title">${show.film.name} </p>
 								<p class="movie_hours">${show.date}</p>
 								
-								 <br><br><ul class="tabs2"><li><a href="${pageContext.request.contextPath}/show/edit/${show.showId}.html">Edit</a></li>   |   <li><a href="${pageContext.request.contextPath}/show/delete/${show.showId}.html">Delete</a>
+								 <br><br><ul class="tabs2"><li><a href="${pageContext.request.contextPath}/show/edit/${show.showId}.html">Edit</a></li>   |   <li><a href="${pageContext.request.contextPath}/show/delete/${show.showId}">Delete</a>
 								</li></ul><br><br>
 								<hr />
 								

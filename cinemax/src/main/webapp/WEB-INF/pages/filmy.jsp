@@ -84,8 +84,12 @@
 
 					<sec:authorize access="hasRole('ROLE_ADMIN')">|	<a href="<c:url value='/film' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie filmami</a>
 					|	<a href="<c:url value='/show' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie seansami</a>
-					|	<a href="<c:url value='/user' />" style="color:white; padding-right:10px; padding-left:10px">Zarządzanie użytkownikami</a>
+					|	<a href="<c:url value='/user' />" style="color:white; padding-right:10px; padding-left:10px">Użytkownicy</a>
+					|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
 					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_EMPLOYEE')">|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
+					</sec:authorize>
+					
 					</sec:authorize>
 					<sec:authorize ifNotGranted="ROLE_USER">
 					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!

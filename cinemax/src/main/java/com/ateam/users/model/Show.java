@@ -46,7 +46,7 @@ public class Show {
 		this.date = date;
 	}
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "film_id", nullable = false)
 	public Film getFilm() {
 		return film;

@@ -27,13 +27,13 @@ import com.ateam.users.service.UserService;
 public class ReservationController {
 	
 	@Autowired
-	private ReservationService fs;
+	private ReservationService rs;
 	
 	@Autowired
-	private SeatService fs2;
+	private SeatService ss;
 	
 	@Autowired
-	private UserService fs3;
+	private UserService us;
 	
 	
 
@@ -43,14 +43,14 @@ public class ReservationController {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("sala");
 		
-		Show show = fs.getShowById(show_id);
+		Show show = rs.getShowById(show_id);
         model.addObject("show", show);
         
-        List<Reservation> reservations = fs2.getReservationsByShow(show_id);
+        List<Reservation> reservations = ss.getReservationsByShow(show_id);
         List<Seat> seats = new ArrayList<Seat>(); 
         
         for(int i=0; i<reservations.size(); i++) {
-        	seats.addAll(fs2.getSeatsReservation(reservations.get(i))); 
+        	seats.addAll(ss.getSeatsReservation(reservations.get(i))); 
         }
 
         model.addObject("lista", seats);
@@ -69,7 +69,7 @@ public class ReservationController {
 
 		ModelAndView modelAndView = new ModelAndView("dane");
 		
-		Show show = fs.getShowById((Integer) session.getAttribute("show"));
+		Show show = rs.getShowById((Integer) session.getAttribute("show"));
 		
 
 		modelAndView.addObject("reservationFormNext", reservation);
@@ -85,7 +85,7 @@ public class ReservationController {
 		String userName =  auth.getName();
 		
 		
-		com.ateam.users.model.User user = fs3.getUser(userName);
+		com.ateam.users.model.User user = us.getUser(userName);
 		
 		if (user != null) {
 		modelAndView.addObject("surname", user.getSurname());
@@ -107,7 +107,7 @@ public class ReservationController {
 		List<String> miejsca = (List<String>) session.getAttribute("MIEJSCA");
 		
 		
-		Show show = fs.getShowById((Integer) session.getAttribute("show"));
+		Show show = rs.getShowById((Integer) session.getAttribute("show"));
 		
 		reservation.setShow(show);
 		
@@ -116,15 +116,15 @@ public class ReservationController {
 		
 		
 		
-		int idd=fs.addReservation(reservation);
+		int idd=rs.addReservation(reservation);
 		
 		for(int i=0; i<miejsca.size(); i++) {
 		seat.setSeatId(null);
 		seat.setSeatName(miejsca.get(i));
 		
-		seat.setReservation(fs.getReservation(idd));
+		seat.setReservation(rs.getReservation(idd));
 		
-		fs2.addSeat(seat);
+		ss.addSeat(seat);
 		}
 		
 		ModelAndView modelAndView = new ModelAndView("redirect:/reservation/list");
@@ -137,9 +137,12 @@ public class ReservationController {
     @RequestMapping(value="/reservation/list")
     public ModelAndView listOfTeams() {
         ModelAndView modelAndView = new ModelAndView("rezerwacje");
+        Reservation reservation = new Reservation();
          
-        List<Reservation> reservations = fs.getReservations();
+        List<Reservation> reservations = rs.getReservations();
         modelAndView.addObject("reservations", reservations);
+        modelAndView.addObject("reservation", reservation);
+
          
         return modelAndView;
     }
@@ -150,7 +153,7 @@ public class ReservationController {
     @RequestMapping(value="/reservation/edit/{id}", method=RequestMethod.GET)
     public ModelAndView editReservation(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("editReservation");
-        Reservation reservation = fs.getReservation(id);
+        Reservation reservation = rs.getReservation(id);
         
         modelAndView.addObject("reservation",reservation);
         return modelAndView;
@@ -161,10 +164,10 @@ public class ReservationController {
          
         ModelAndView modelAndView = new ModelAndView("redirect:/reservation/list");
          
-        fs.updateReservation(reservation, id);
+        rs.updateReservation(reservation, id);
          
-        String message = "Reservation was successfully edited.";
-        modelAndView.addObject("message", message);
+        String message2 = "Reservation was successfully edited.";
+        modelAndView.addObject("message2", message2);
          
         return modelAndView;
     }
@@ -172,9 +175,28 @@ public class ReservationController {
     @RequestMapping(value="/reservation/delete/{id}", method=RequestMethod.GET)
     public ModelAndView deletereservation(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/reservation/list");
-        fs.deleteReservation(id);
-        String message = "Reservation was successfully deleted.";
-        modelAndView.addObject("message", message);
+        rs.deleteReservation(id);
+        String message2 = "Reservation was successfully deleted.";
+        modelAndView.addObject("message2", message2);
         return modelAndView;
     }
+    
+    
+    @RequestMapping(value="/reservation/search")
+    public ModelAndView searchRes (@ModelAttribute Reservation reservation) {
+        ModelAndView modelAndView = new ModelAndView("rezerwacje");
+
+    	
+    	List<Reservation> reservations = rs.getReservationsClient(reservation.getSurname());
+    	
+        modelAndView.addObject("reservations", reservations);
+        modelAndView.addObject("reservation", reservation);
+
+    	
+		return modelAndView;
+    	
+    }
+    
 }
+
+

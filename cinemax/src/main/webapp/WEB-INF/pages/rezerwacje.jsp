@@ -86,14 +86,17 @@
 					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
 					|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
 					   |   <a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj rezerwację</a>
-					      |   <a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Klienci</a>
-					         |   <a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj klienta</a></div>
+					      |   <a href="<c:url value='/user' />" style="color:white; padding-right:10px; padding-left:10px">Klienci</a>
+					         |   <a href="<c:url value='/user/add' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj klienta</a></div>
 
 			
 				<div id="center2">
 				
  
-
+ <c:if test="${not empty message2}">
+							<div class="msg">${message2}</div>
+						</c:if>
+						
 				
 					<h2>Rezerwacje</h2>
 					
@@ -108,11 +111,11 @@
 								<li><a href="#tab-8">czw.</a></li>
 						</ul>
 						
-						<form action="#" class="szukaj" style="float:right; display:block">
+						<form:form action="search" class="szukaj" style="float:right; display:block" method="GET" modelAttribute="reservation">
 						<ul>
-							  <li><label>Szukaj</label> <input type="text" name="fname" /></li>
+							  <li><label>Szukaj</label> <form:input path="surname"/></li>
 						</ul>
-						</form>
+						</form:form>
 						
 						<div style="clear:both"></div>
 						

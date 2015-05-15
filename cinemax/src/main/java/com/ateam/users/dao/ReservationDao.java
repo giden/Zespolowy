@@ -11,4 +11,5 @@ public interface ReservationDao {
 	List<Reservation> getReservationsShow(Integer id);
 	void deleteReservation(int id);
 	List<Reservation> getReservations();
+	List<Reservation> getReservationsClient(String surname);
 }

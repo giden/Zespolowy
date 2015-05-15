@@ -40,6 +40,12 @@ public class ReservationServiceImpl implements ReservationService {
 	public Reservation getReservation(int id) {
 		return reservationDao.getReservation(id);
 	}
+	
+	@Transactional
+	@Override
+	public List<Reservation> getReservationsClient(String surname) {
+		return reservationDao.getReservationsClient(surname);
+	}	
 	@Transactional
 	@Override
 	public void deleteReservation(int id) {

@@ -35,11 +35,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/user/add/process")
-	public ModelAndView processAdding(@ModelAttribute("userForm") User user) {
+	public ModelAndView processAdding(@ModelAttribute("userForm") User user, HttpSession session) {
 		us.createUser(user);
 		
 		ModelAndView modelAndView = new ModelAndView("redirect:/redirectUsers");
-		
+        String message = "User was successfully added.";
+        session.setAttribute("message", message);
+
 	    
 	    return modelAndView;	
 	}
@@ -99,46 +101,47 @@ public class UserController {
     }
     
     @RequestMapping(value="/user/edit/process/{username}", method=RequestMethod.GET)
-    public ModelAndView editingFilm(@ModelAttribute("userForm") User user, @PathVariable String username) {
+    public ModelAndView editingFilm(@ModelAttribute("userForm") User user, @PathVariable String username, HttpSession session) {
          
         ModelAndView modelAndView = new ModelAndView("redirect:/redirectUsers");
          
         us.updateUser(user, username);
          
         String message = "User was successfully edited.";
-        modelAndView.addObject("message", message);
+        session.setAttribute("message", message);
          
         return modelAndView;
     }
     
     @RequestMapping(value="/profile/process/{username}", method=RequestMethod.GET)
-    public ModelAndView editingUserbyUser(@ModelAttribute("userForm") User user, @PathVariable String username) {
+    public ModelAndView editingUserbyUser(@ModelAttribute("userForm") User user, @PathVariable String username, HttpSession session) {
          
         ModelAndView modelAndView = new ModelAndView("redirect:/");
          
         us.updateUser(user, username);
          
         String message = "User was successfully edited.";
-        modelAndView.addObject("message", message);
+        session.setAttribute("message", message);
          
         return modelAndView;
     }
     
     @RequestMapping(value="/user/delete/{username}", method=RequestMethod.GET)
-    public ModelAndView deletefilm(@PathVariable String username) {
+    public ModelAndView deletefilm(@PathVariable String username, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("redirect:/redirectUsers");
         us.deleteUser(username);
         String message = "User was successfully deleted.";
-        modelAndView.addObject("message", message);
+        session.setAttribute("message", message);
         return modelAndView;
     }
     
     @RequestMapping(value="/user/roles/delete/{username}/{role}", method=RequestMethod.GET)
-    public ModelAndView deleteUserRole(@PathVariable("role") String role, @PathVariable("username") String username) {
+    public ModelAndView deleteUserRole(@PathVariable("role") String role, 
+    		@PathVariable("username") String username, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("redirect:/redirectUsers");
         us.deleteRole(role, username);
         String message = "Role was successfully deleted.";
-        modelAndView.addObject("message", message);
+        session.setAttribute("message", message);
         return modelAndView;
     }
     @RequestMapping(value="/user/roles/add/{username}")
@@ -160,7 +163,9 @@ public class UserController {
 		us.createRole(role);
 		
 		ModelAndView modelAndView = new ModelAndView("redirect:/redirectUsers");
-		
+        String message = "Role was successfully added.";
+        session.setAttribute("message", message);
+
 	    
 	    return modelAndView;	
 	}

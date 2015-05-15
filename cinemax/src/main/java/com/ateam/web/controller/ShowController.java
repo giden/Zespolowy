@@ -41,7 +41,9 @@ public class ShowController {
 		Show showForm = new Show();
 		session.setAttribute("filmId", filmId);
 		model.addObject("showForm", showForm);
-		
+        String message = "Show was successfully added.";
+        session.setAttribute("message", message);
+
 		return model;
 	}
 	
@@ -83,24 +85,24 @@ public class ShowController {
     }
     
     @RequestMapping(value="/show/edit/process/{id}", method=RequestMethod.GET)
-    public ModelAndView editingShow(@ModelAttribute Show show, @PathVariable Integer id) {
+    public ModelAndView editingShow(@ModelAttribute Show show, @PathVariable Integer id, HttpSession session) {
          
         ModelAndView modelAndView = new ModelAndView("redirect:/redirect");
          
         fs.updateShow(show, id);
          
-        String message = "Film was successfully edited.";
-        modelAndView.addObject("message", message);
+        String message = "Show was successfully edited.";
+        session.setAttribute("message", message);
          
         return modelAndView;
     }
     
     @RequestMapping(value="/show/delete/{id}", method=RequestMethod.GET)
-    public ModelAndView deleteShow(@PathVariable Integer id) {
+    public ModelAndView deleteShow(@PathVariable Integer id, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("redirect:/redirect");
         fs.deleteShow(id);
-        String message = "Film was successfully deleted.";
-        modelAndView.addObject("message", message);
+        String message = "Show was successfully deleted.";
+        session.setAttribute("message", message);
         return modelAndView;
     }
 }

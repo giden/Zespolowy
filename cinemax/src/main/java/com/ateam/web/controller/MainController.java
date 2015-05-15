@@ -3,8 +3,13 @@ package com.ateam.web.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -17,6 +22,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ateam.users.model.User;
@@ -63,12 +70,12 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/redirect", method = RequestMethod.GET)
-	public ModelAndView redirectPage() {
+	public ModelAndView redirectPage(HttpSession session) {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect");
 		
-		String message = "Film was successfully edited.";
+		 String message = (String) session.getAttribute("messsage");
 	    model.addObject("message", message);
 
 		return model;
@@ -76,12 +83,12 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/redirectUsers", method = RequestMethod.GET)
-	public ModelAndView redirectUseraPage() {
+	public ModelAndView redirectUseraPage(HttpSession session) {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirectUsers");
-		
-		String message = "User was successfully edited.";
+
+		 String message = (String) session.getAttribute("messsage");
 	    model.addObject("message", message);
 
 		return model;
@@ -157,7 +164,9 @@ public class MainController {
         return new ModelAndView("register");
     }
      
-    @RequestMapping(value = "/register/process", method = RequestMethod.GET)
+    @RequestMapping(value = "/register/process", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     public ModelAndView processRegistration(@ModelAttribute("userForm") User user,
             Map<String, Object> model) {
          

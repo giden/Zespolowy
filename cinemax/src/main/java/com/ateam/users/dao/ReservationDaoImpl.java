@@ -1,6 +1,7 @@
 package com.ateam.users.dao;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -55,6 +56,18 @@ public class ReservationDaoImpl implements ReservationDao {
 	public List<Reservation> getReservationsShow(Integer id) {
         return sessionFactory.getCurrentSession().createQuery("from Reservation where show="+id).list();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Reservation> getReservationsClient(String surname) {
+		
+		List<Reservation> reservations = new ArrayList<Reservation>();
+
+		reservations = sessionFactory.getCurrentSession().createQuery("from Reservation where surname=?").setParameter(0, surname)
+				.list();
+		
+        return reservations;
+        }
 
 	@SuppressWarnings("unchecked")
 	@Override

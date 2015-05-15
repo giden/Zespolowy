@@ -13,5 +13,6 @@ public interface ReservationService {
 	    public void deleteReservation(int id);
 	    public List<Reservation> getReservations();
 		Show getShowById(Integer id);
+		List<Reservation> getReservationsClient(String surname);
 	
 }

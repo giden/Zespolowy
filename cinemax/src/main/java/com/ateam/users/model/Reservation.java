@@ -82,7 +82,7 @@ public class Reservation {
 		this.date = date;
 	}
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "show_id", nullable = false)
 	public Show getShow() {
 		return show;
