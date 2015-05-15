@@ -68,7 +68,7 @@
 				
 					<h2>Wybór miejsca</h2>
 					
-					<p class="movie_title">${show.film.name}<span style="color:#8786c6; font-weight:normal"> |</span> <span style="color:#ffcc1c">Piątek / ${show.date}</p>
+					<p class="movie_title">${show.film.name}<span style="color:#8786c6; font-weight:normal"> |</span> <span style="color:#ffcc1c">${show.dateDay} / ${show.date}</p>
 					
 					<hr />
 					

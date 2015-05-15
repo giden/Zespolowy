@@ -61,7 +61,7 @@
 					
 					<form:form action="process/${show.showId}" method="GET"  commandName="show" class="dane">
               
-               				<form:input type="date" path="date" />
+               				<form:input type="datetime-local" path="date" />
                				<input type="submit" value="Update" />
       				  </form:form>
 					

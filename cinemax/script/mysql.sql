@@ -38,6 +38,8 @@ CREATE TABLE films (
 CREATE TABLE shows (
 	show_id int(11) NOT NULL AUTO_INCREMENT,
 	show_date datetime NOT NULL,
+		show_day varchar(15) NULL,
+
 	film_id int(11) NOT NULL,
 	PRIMARY KEY (show_id),
  	UNIQUE KEY uni_id_date(show_date, film_id),

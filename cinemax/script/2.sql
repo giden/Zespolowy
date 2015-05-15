@@ -7,7 +7,7 @@ VALUES ('Gwiezdne wojny VII');
 
 
 INSERT INTO shows(film_id, show_date)
-VALUES (1, "2010-02-01 10:00:00");
+VALUES (1, "2015-05-01 10:00:00");
 
 INSERT INTO shows(film_id, show_date)
 VALUES (1, "2010-02-01 12:00:00");

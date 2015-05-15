@@ -61,7 +61,7 @@
 					
 					<form:form action="/cinemax/show/add/process" method="GET" modelAttribute="showForm" class="dane">
               
-               				<form:input type="date" path="date" />
+               				<form:input type="datetime-local" path="date" />
                				<input type="submit" value="Add" />
       				  </form:form>
 					

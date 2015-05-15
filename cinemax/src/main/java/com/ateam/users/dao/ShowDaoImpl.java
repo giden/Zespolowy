@@ -34,6 +34,7 @@ public class ShowDaoImpl implements ShowDao {
 	@Override
 	public Integer addShow(Show show) {
 
+			show.setDateDayFunction(show.getDate());
 		show.setShowId(null);
 		return (Integer) sessionFactory.getCurrentSession().save(show);
 
@@ -43,6 +44,9 @@ public class ShowDaoImpl implements ShowDao {
 	public void updateShow(Show show, Integer id) {
 		Show showToUpdate = getShow(id);
 		showToUpdate.setDate(show.getDate());
+
+			showToUpdate.setDateDayFunction(show.getDate());
+
         sessionFactory.getCurrentSession().update(showToUpdate);
 		
 	}
