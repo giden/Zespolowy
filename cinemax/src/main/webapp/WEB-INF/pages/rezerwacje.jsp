@@ -84,10 +84,10 @@
 											<li><img alt="" src="images/menu/l.png" /></li>
 					</ul>-->
 					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
-					|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
+					<sec:authorize access="hasRole('ROLE_EMPLOYEE')">|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
 					   |   <a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj rezerwację</a>
 					      |   <a href="<c:url value='/user' />" style="color:white; padding-right:10px; padding-left:10px">Klienci</a>
-					         |   <a href="<c:url value='/user/add' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj klienta</a></div>
+					         |   <a href="<c:url value='/user/add' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj klienta</a></sec:authorize></div>
 
 			
 				<div id="center2">
@@ -110,12 +110,13 @@
 								<li><a href="#tab-7">śr.</a></li>
 								<li><a href="#tab-8">czw.</a></li>
 						</ul>
-						
+						<sec:authorize access="hasRole('ROLE_EMPLOYEE')">
 						<form:form action="search" class="szukaj" style="float:right; display:block" method="GET" modelAttribute="reservation">
 						<ul>
 							  <li><label>Szukaj</label> <form:input path="surname"/></li>
 						</ul>
 						</form:form>
+						</sec:authorize>
 						
 						<div style="clear:both"></div>
 						
@@ -131,7 +132,8 @@
 									<th>Data rezerwacji</th>
 									<th>Miejsce</th>
 
-									<th style="text-align:right">Ustawienia</th>
+									<sec:authorize access="hasRole('ROLE_EMPLOYEE')"><th style="text-align:right">Ustawienia</th>
+									</sec:authorize>
 								</tr>
 								<c:forEach var="reservation" items="${reservations}">  
 								
@@ -143,7 +145,10 @@
 									<td><c:forEach var="seat" items="${reservation.seats}"> ${seat.seatName } 
 																	</c:forEach></td>
 									
-									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="${pageContext.request.contextPath}/reservation/edit/${reservation.reservationId}">Edytuj</a>   |   <a href="${pageContext.request.contextPath}/reservation/delete/${reservation.reservationId}">Usuń</a></td>
+									<sec:authorize access="hasRole('ROLE_EMPLOYEE')">
+									<td style="color:#9493d8; text-align:right" class="ustawienia"><a href="${pageContext.request.contextPath}/reservation/edit/${reservation.reservationId}">Edytuj</a>   
+									|   <a href="${pageContext.request.contextPath}/reservation/delete/${reservation.reservationId}">Usuń</a></td>
+									</sec:authorize>
 									</tr>
 									
 								

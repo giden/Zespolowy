@@ -46,6 +46,13 @@ public class ReservationServiceImpl implements ReservationService {
 	public List<Reservation> getReservationsClient(String surname) {
 		return reservationDao.getReservationsClient(surname);
 	}	
+	
+	@Transactional
+	@Override
+	public List<Reservation> getReservationsUser(String username) {
+		return reservationDao.getReservationsUser(username);
+	}	
+
 	@Transactional
 	@Override
 	public void deleteReservation(int id) {

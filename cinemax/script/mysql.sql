@@ -50,6 +50,8 @@ CREATE TABLE shows (
 
 CREATE TABLE `reservations` (
   `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(45) NULL,
+
   `reservationname` varchar(45) NOT NULL,
   `reservationsurname` varchar(45) DEFAULT NULL,
   `reservationemail` varchar(45) NOT NULL,

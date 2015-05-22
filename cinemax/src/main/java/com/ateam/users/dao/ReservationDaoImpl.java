@@ -68,6 +68,19 @@ public class ReservationDaoImpl implements ReservationDao {
 		
         return reservations;
         }
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Reservation> getReservationsUser(String username) {
+		
+		List<Reservation> reservations = new ArrayList<Reservation>();
+
+		reservations = sessionFactory.getCurrentSession().createQuery("from Reservation where username=?").setParameter(0, username)
+				.list();
+		
+        return reservations;
+        }
+
 
 	@SuppressWarnings("unchecked")
 	@Override

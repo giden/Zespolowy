@@ -23,7 +23,7 @@ public class Reservation {
 	
 	private Integer reservationId;
 	
-	private String name, surname, email, phone;
+	private String username, name, surname, email, phone;
 	private Date date = new Date();
 	private List<Seat> seats = new ArrayList<Seat>(0);
 	
@@ -97,6 +97,14 @@ public class Reservation {
 	}
 	public void setSeats(List<Seat> seat) {
 		this.seats = seat;
+	}
+	
+	@Column(name = "username", unique = false, nullable = true, length = 45)
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	/*@OneToMany(fetch = FetchType.EAGER, mappedBy = "reservation")

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ateam.users.model.Reservation;
 import com.ateam.users.model.Seat;
 import com.ateam.users.model.Show;
+import com.ateam.users.model.UserRole;
 import com.ateam.users.service.ReservationService;
 import com.ateam.users.service.SeatService;
 import com.ateam.users.service.UserService;
@@ -102,7 +103,11 @@ public class ReservationController {
 	
 	@RequestMapping(value="/sala/add/process/next")
 	public ModelAndView processAddingNext(@ModelAttribute("reservationFormNext") Reservation reservation, HttpSession session) {
-						
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userName =  auth.getName();
+
+		
 		@SuppressWarnings("unchecked")
 		List<String> miejsca = (List<String>) session.getAttribute("MIEJSCA");
 		
@@ -110,6 +115,7 @@ public class ReservationController {
 		Show show = rs.getShowById((Integer) session.getAttribute("show"));
 		
 		reservation.setShow(show);
+		reservation.setUsername(userName);
 		
 		Seat seat = new Seat();
 		
@@ -127,8 +133,15 @@ public class ReservationController {
 		ss.addSeat(seat);
 		}
 		
-		ModelAndView modelAndView = new ModelAndView("redirect:/reservation/list");
 		
+		ModelAndView modelAndView = new ModelAndView("redirect:/profile/list");
+
+
+		for (UserRole rola : us.getRoles(userName)) {
+			if(rola.getRole().equals("ROLE_EMPLOYEE"))
+			modelAndView.setViewName("redirect:/reservation/list");
+		}
+				
 	    
 	    return modelAndView;	
 	}
@@ -146,6 +159,22 @@ public class ReservationController {
          
         return modelAndView;
     }
+    
+    @RequestMapping(value="/profile/list")
+    public ModelAndView listOfReservationsUser() {
+        ModelAndView modelAndView = new ModelAndView("rezerwacje");
+        
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userName =  auth.getName();
+
+         
+        List<Reservation> reservations = rs.getReservationsUser(userName);
+        modelAndView.addObject("reservations", reservations);
+
+         
+        return modelAndView;
+    }
+
     
     
     

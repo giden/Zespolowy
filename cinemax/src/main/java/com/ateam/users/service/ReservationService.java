@@ -12,7 +12,8 @@ public interface ReservationService {
 	    public Reservation getReservation(int id);
 	    public void deleteReservation(int id);
 	    public List<Reservation> getReservations();
-		Show getShowById(Integer id);
-		List<Reservation> getReservationsClient(String surname);
+		public Show getShowById(Integer id);
+		public List<Reservation> getReservationsClient(String surname);
+		public List<Reservation> getReservationsUser(String username);
 	
 }
