@@ -134,8 +134,14 @@ public class ReservationController {
 		}
 		
 		
-		ModelAndView modelAndView = new ModelAndView("redirect:/profile/list");
+		ModelAndView modelAndView = new ModelAndView("redirect:/");
 
+
+		for (UserRole rola : us.getRoles(userName)) {
+			if(rola.getRole().equals("ROLE_USER"))
+			modelAndView.setViewName("redirect:/profile/list");
+		}
+				
 
 		for (UserRole rola : us.getRoles(userName)) {
 			if(rola.getRole().equals("ROLE_EMPLOYEE"))
