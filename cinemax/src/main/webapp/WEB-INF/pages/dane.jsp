@@ -69,7 +69,7 @@
 				
 					<h2>Dane rezerwacji</h2>
 					
-					<p class="movie_title">${show.film.name}<span style="color:#8786c6; font-weight:normal">|</span> <span style="color:#ffcc1c">Piątek / ${show.date} / <span style="font-weight:normal">Godzina:</span> 19:00</span></p>
+					<p class="movie_title">${show.film.name}<span style="color:#8786c6; font-weight:normal">|</span> <span style="color:#ffcc1c">Piątek / ${show.date} </span></p>
 					
 					<hr />
 					
@@ -80,11 +80,11 @@
                				
                				<ul>
                				
-							  <li><label>Imię</label> <form:input type="text" path="name" value="${name}" /></li>
-							  <li><label>Nazwisko</label> <form:input type="text" path="surname" value="${surname}" /></li>
-							  <li><label>E-mail</label> <form:input type="text" path="email" value="${email}" /></li>
+							  <li><label>Imię</label> <form:input type="text" path="name" value="${name}" minlength="3" maxlength="15" required="true"/></li>
+							  <li><label>Nazwisko</label> <form:input type="text" path="surname" value="${surname}" minlength="3" maxlength="20" required="true"/></li>
+							  <li><label>E-mail</label> <form:input type="email" path="email" value="${email}" /></li>
 							  <!--<li><label>Powtórz e-mail</label> <form:input type="text" path="email" /></li>-->
-							  <li><label>Numer telefonu</label> <form:input type="text" path="phone" value="${phone}" /></li>
+							  <li><label>Numer telefonu</label> <form:input type="tel" pattern="^([0-9\(\)\/\+ \-]*)$" maxlength="17" path="phone" value="${phone}" /></li>
 							
 						</ul>
                				<input type="submit" value="Dodaj" />

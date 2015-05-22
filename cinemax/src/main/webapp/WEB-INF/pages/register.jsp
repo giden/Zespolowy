@@ -41,8 +41,8 @@
 					
 					<form:form action="register/process" method="POST" modelAttribute="userForm" class="dane">
               
-               				<form:input path="username" />
-               				<form:password path="password" />
+               				<form:input path="username" minlength="3" maxlength="10" required="true"/>
+               				<form:password path="password" minlength="3" maxlength="20" required="true"/>
                				<input type="submit" value="Register" />
       				  </form:form>
 					

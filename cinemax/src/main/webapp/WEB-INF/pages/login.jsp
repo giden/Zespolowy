@@ -45,8 +45,8 @@
 											
 						<form name='loginForm'	action="<c:url value='/login' />" method='post'>
 									<div>
-												<input name="username" class="field" id="user_login" type="text" value="Login..." onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
-												<input name="password" class="field" id="user_pass" type="password" value="Hasło..." onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
+												<input name="username" class="field" id="user_login" type="text" value="Login..." minlength="3" maxlength="10" onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
+												<input name="password" class="field" id="user_pass" type="password" value="Hasło..." minlength="3" maxlength="20" onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue"/>
 												<input type="submit" value="" name="submit" class="login"  />
 												<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /></div>
 						</form>

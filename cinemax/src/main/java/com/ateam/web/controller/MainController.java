@@ -164,7 +164,7 @@ public class MainController {
         return new ModelAndView("register");
     }
      
-    @RequestMapping(value = "/register/process", method = RequestMethod.POST)
+    @RequestMapping(value = "/register/process", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ModelAndView processRegistration(@ModelAttribute("userForm") User user,

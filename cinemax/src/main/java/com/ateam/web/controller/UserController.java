@@ -127,7 +127,7 @@ public class UserController {
     }
     
     @RequestMapping(value="/user/delete/{username}", method=RequestMethod.GET)
-    public ModelAndView deletefilm(@PathVariable String username, HttpSession session) {
+    public ModelAndView deleteUser(@PathVariable String username, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("redirect:/redirectUsers");
         us.deleteUser(username);
         String message = "User was successfully deleted.";

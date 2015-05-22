@@ -55,36 +55,41 @@
 				<div id="center2">
 				<br></br>
 				<br></br>
-				<div class="tabs3">
-					<a class="active" href="${pageContext.request.contextPath}/user/roles/add/${user.username}"> DODAJ ROLĘ </a>
+					<div class="tabs3">
+						<a class="active"
+							href="${pageContext.request.contextPath}/user/roles/add/${user.username}">
+							DODAJ ROLĘ </a>
 					</div>
-				<br></br>
-					<p><strong>${user.username}</strong></p>
+					<br></br>
+					<p>
+						<strong>${user.username}</strong>
+					</p>
 					<p>Imię: ${user.name}</p>
 					<p>Nazwisko: ${user.surname}</p>
 					<p>Email: ${user.email}</p>
 					<p>Telefon: ${user.phone}</p>
-					<p>  
+					<p>
 						<table class="rezerwacje" align="center">
-								<tr>
-									<th>Username</th>
-									<th>Role</th>
-									<th>Ustawienia</th>
-								</tr>
-								<c:forEach var="role" items="${roles}">  
-								
+							<tr>
+								<th>Username</th>
+								<th>Role</th>
+								<th>Ustawienia</th>
+							</tr>
+							<c:forEach var="role" items="${roles}">
+
 								<tr>
 									<td>${role.user.username}</td>
 									<td>${role.role}</td>
-									
-									<td style="color:#9493d8; text-align:right" class="ustawienia">
-									<a href="${pageContext.request.contextPath}/user/roles/delete/${user.username}/${role.role}">Usuń</a></td>
+
+									<td style="color: #9493d8; text-align: right"
+										class="ustawienia"><a
+										href="${pageContext.request.contextPath}/user/roles/delete/${user.username}/${role.role}">Usuń</a></td>
 								</tr>
-									
-								
-								</c:forEach>
-							</table>
-					
+
+
+							</c:forEach>
+						</table>
+
 					</p>
 				</div>
 

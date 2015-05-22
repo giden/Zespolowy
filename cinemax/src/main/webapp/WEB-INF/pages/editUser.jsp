@@ -58,12 +58,12 @@
 					<form:form action="process/${userForm.username}" method="GET"  commandName="userForm" class="dane">
               
                				<ul>
-							  <li><label>Imię</label> <form:input type="text" path="name" /></li>
-							  <li><label>Nazwisko</label> <form:input type="text" path="surname" /></li>
-							  <li><label>Hasło</label> <form:password path="password" /></li>
-							  <li><label>E-mail</label> <form:input type="text" path="email" /></li>
-							  <li><label>Numer telefonu</label> <form:input type="text" path="phone" /></li>
-							</ul>
+							   <li><label>Imię</label> <form:input type="text" path="name" value="${name}" minlength="3"  maxlength="15"/></li>
+							  <li><label>Nazwisko</label> <form:input type="text" path="surname" value="${surname}" minlength="3" maxlength="20"/></li>
+							  <li><label>E-mail</label> <form:input type="email" path="email" value="${email}" /></li>
+							  <li><label>Hasło</label> <form:password path="password" minlength="3" maxlength="20"/></li>
+							  <li><label>Numer telefonu</label> <form:input type="tel" pattern="^([0-9\(\)\/\+ \-]*)$" maxlength="17" path="phone" value="${phone}" /></li>
+														</ul>
                				<input type="submit" value="Edytuj" />
       				  </form:form>
 					
