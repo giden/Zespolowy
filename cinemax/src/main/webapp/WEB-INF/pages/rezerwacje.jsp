@@ -79,10 +79,7 @@
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<!--<ul>
-						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
-											<li><img alt="" src="images/menu/l.png" /></li>
-					</ul>-->
+					
 					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
 					<sec:authorize access="hasRole('ROLE_EMPLOYEE')">|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
 					   |   <a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj rezerwację</a>
@@ -100,7 +97,7 @@
 				
 					<h2>Rezerwacje</h2>
 					
-						<ul class="tabs" style="float: left; display:block">
+					<!-- <ul class="tabs" style="float: left; display:block">
 								<li class="active"><a href="#tab-1" class="active">wszystkie</a></li>
 								<li><a href="#tab-2">pt.</a></li>
 								<li><a href="#tab-3">sob.</a></li>
@@ -109,7 +106,7 @@
 								<li><a href="#tab-6">wt.</a></li>
 								<li><a href="#tab-7">śr.</a></li>
 								<li><a href="#tab-8">czw.</a></li>
-						</ul>
+						</ul>-->
 						<sec:authorize access="hasRole('ROLE_EMPLOYEE')">
 						<form:form action="search" class="szukaj" style="float:right; display:block" method="GET" modelAttribute="reservation">
 						<ul>
@@ -157,10 +154,10 @@
 						</div>
 						
 						
-					<div id="navigation_reservation">
+					<!--<div id="navigation_reservation">
 							<div id="previous"><a href="#"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
 							<div id="next"><a href="#"><img alt="" src="/cinemax/resources/images/next.png" /></a></div>
-					</div>	
+					</div>	-->
 				</div>
 
 			<div style="clear:both;"></div>

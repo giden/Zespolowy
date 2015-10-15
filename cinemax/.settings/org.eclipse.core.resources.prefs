@@ -10,3 +10,5 @@ encoding//src/main/webapp/WEB-INF/pages/redirect.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/register.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/rezerwacje.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/sala.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/showsAdmin.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/usersAdmin.jsp=UTF-8

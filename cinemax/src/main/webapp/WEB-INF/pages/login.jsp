@@ -38,7 +38,7 @@
 						<c:if test="${not empty msg}">
 							<div class="msg">${msg}</div>
 						</c:if>
-						<br><br>
+						<br /><br />
 					   <div class="login_box">
 					   
 											

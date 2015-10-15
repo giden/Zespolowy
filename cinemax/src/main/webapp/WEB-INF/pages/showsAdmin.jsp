@@ -88,7 +88,7 @@
 			
 				<div id="center2">
 				
-					<br><br>
+					<br /><br />
 					<div class="tabs3">
 					<a class="active" href="${pageContext.request.contextPath}/show/add"> DODAJ SEANS </a>
 					</div>
@@ -104,8 +104,8 @@
 								<p class="movie_title">${show.film.name} </p>
 								<p class="movie_hours">${show.date}</p>
 								
-								 <br><br><ul class="tabs2"><li><a href="${pageContext.request.contextPath}/show/edit/${show.showId}.html">Edit</a></li>   |   <li><a href="${pageContext.request.contextPath}/show/delete/${show.showId}">Delete</a>
-								</li></ul><br><br>
+								 <br /><br /><ul class="tabs2"><li><a href="${pageContext.request.contextPath}/show/edit/${show.showId}.html">Edit</a></li>   |   <li><a href="${pageContext.request.contextPath}/show/delete/${show.showId}">Delete</a>
+								</li></ul><br /><br />
 								<hr />
 								
 								  								</li>

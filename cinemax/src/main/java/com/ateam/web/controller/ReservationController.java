@@ -41,6 +41,8 @@ public class ReservationController {
 	@RequestMapping(value = "/sala/{show_id}", method = RequestMethod.GET)
 	public ModelAndView salePage(@PathVariable Integer show_id, HttpSession session) {
 
+		session.setAttribute("MIEJSCA", null);
+		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("sala");
 		
@@ -75,6 +77,7 @@ public class ReservationController {
 
 		modelAndView.addObject("reservationFormNext", reservation);
 		modelAndView.addObject("show", show);
+		modelAndView.addObject("show_id", (Integer) session.getAttribute("show"));
 		List<String> miejsca = new ArrayList<String>();
 		for(int i=1; i<=155; i++) {
 			if(request.getParameter(i+"s")!=null)

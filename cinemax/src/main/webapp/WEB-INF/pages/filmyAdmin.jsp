@@ -91,15 +91,7 @@
 					</div>
 					<h2>Wybór filmu</h2>
 					
-						<!--  <ul class="tabs">
-								<li class="active"><a href="#tab-1" class="active">pt.</a></li>
-								<li><a href="#tab-2">sob.</a></li>
-								<li><a href="#tab-3">niedz.</a></li>
-								<li><a href="#tab-4">pon.</a></li>
-								<li><a href="#tab-5">wt.</a></li>
-								<li><a href="#tab-6">śr.</a></li>
-								<li><a href="#tab-7">czw.</a></li>
-						</ul>-->
+						
 						 
 						<div id="tab-1" class="tab">
 						
@@ -124,66 +116,7 @@
 						</c:forEach>
 						</ul>
 						</div>
-						<!--  <div id="tab-2" class="tab">
-							<ul>
-								<li>
-								<p class="movie_title">Harry potter</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-3" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">Matrix</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-4" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">Spider-Man</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-5" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">James Bond</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-6" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">Labirynt</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-						<div id="tab-7" class="tab">
-								<ul>
-								<li>
-								<p class="movie_title">Wkręceni 2</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-								<li>
-								<p class="movie_title">Labirynt</p>
-								<p class="movie_hours"><a href="sala.xhtml">11:00</a>   |   <a href="sala.xhtml">13:30</a>   |   <a href="sala.xhtml">19:00</a></p>
-								<hr />
-								</li>
-							</ul>
-						</div>
-					-->
+						
 				</div>
 
 			<div style="clear:both;"></div>

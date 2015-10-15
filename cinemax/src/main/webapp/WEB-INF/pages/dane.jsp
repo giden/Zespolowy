@@ -89,10 +89,9 @@
 						</ul>
                				<input type="submit" value="Dodaj" />
                				
-               				<!--  <div id="navigation">
-							<div id="previous"><a href="/cinemax/reservation/add"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
-							<div id="next"><a href="rezerwacje.xhtml"><img alt="" src="/cinemax/resources/images/end.png" /></a></div>
-						</div>-->
+               				<div id="navigation">
+							<div id="previous"><a href="/cinemax/sala/${show_id}"><img alt="" src="/cinemax/resources/images/previous.png" /></a></div>
+							</div>
       				  </form:form>
 					
 				</div>

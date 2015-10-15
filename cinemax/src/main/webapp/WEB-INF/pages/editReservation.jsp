@@ -52,10 +52,6 @@
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<!--<ul>
-						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
-											<li><img alt="" src="images/menu/l.png" /></li>
-					</ul>-->
 					<a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Strona główna</a>
 					|	<a href="<c:url value='/reservation/list' />" style="color:white; padding-right:10px; padding-left:10px">Rezerwacje</a>
 					   |   <a href="<c:url value='/' />" style="color:white; padding-right:10px; padding-left:10px">Dodaj rezerwację</a>

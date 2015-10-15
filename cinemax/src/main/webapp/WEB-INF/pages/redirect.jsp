@@ -79,10 +79,6 @@
 			<div id="content_top"></div>
 			<div id="content">
 				<div id="menu">
-					<!--<ul>
-						<li><a href=""><img alt="Strona G____wna" src="images/menu/1.png" /></a></li>
-											<li><img alt="" src="images/menu/l.png" /></li>
-					</ul>-->
 					<sec:authorize ifNotGranted="ROLE_USER">
 					Niezalogowany, <a href="<c:url value='/login' />">zaloguj się</a> lub skorzystaj z systemu jednorazowo bez logowania!
 					</sec:authorize>

@@ -105,7 +105,7 @@
 				
 					<h2>Wybór filmu</h2>
 					
-						<ul class="tabs">
+						<!--<ul class="tabs">
 								<li class="active"><a href="#tab-1" class="active">pt.</a></li>
 								<li><a href="#tab-2">sob.</a></li>
 								<li><a href="#tab-3">niedz.</a></li>
@@ -114,7 +114,7 @@
 								<li><a href="#tab-6">śr.</a></li>
 								<li><a href="#tab-7">czw.</a></li>
 						</ul>
-						 
+						 -->
 						<div id="tab-1" class="tab">
 						
 						<ul>

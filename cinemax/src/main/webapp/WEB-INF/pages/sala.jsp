@@ -101,7 +101,7 @@
 							<tbody>
 								<tr>
 									<th scope="row">A</th>
-									<td><input type="checkbox" name="1s" id="1s" value="1s" />
+									<td><input type="checkbox" name="1s" id="1s" value="1s" >
 										<label id="labelus" for="1s"
 										class="<c:forEach items="${lista}" var="miejsce"><c:if test="${miejsce.getSeatName() == '1s'}">no</c:if></c:forEach>noactive"
 										onclick="javascript:$(this).toggleClass('active').toggleClass('noactive');">1</label></td>

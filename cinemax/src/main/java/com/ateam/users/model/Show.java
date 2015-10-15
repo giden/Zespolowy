@@ -86,7 +86,6 @@ public class Show {
 	    
 	    
 	    int day = calendar.get(Calendar.DAY_OF_WEEK);
-	    System.out.println("aa" + day);
 	    
 	    switch (day) {
 	    case 1: this.dateDay = "Poniedzialek"; break;
