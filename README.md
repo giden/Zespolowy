@@ -16,7 +16,7 @@ System rezerwacji biletów
 - dodać rolę pracownik DONE
 - crud seansow DONE
 - seanse do filmów, rezerwacje do seansów DONE
-- wybór miejsc do rezerwacji wielokrotny IN PROGRESS: zabezpieczyć przed multiseat
+- wybór miejsc do rezerwacji wielokrotny DONE
 - dodać cruda dla userów DONE
 - user zalogowany do rezerwacji DONE
 - obsługa zakladek filmów i seansów TODO
